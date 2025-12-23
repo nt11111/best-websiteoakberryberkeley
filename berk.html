@@ -2,40 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OakBerry Açaí Berkeley</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --purple: #5b2d8b;
-      --light-purple: #f4effa;
       --orange: #ff6a00;
+      --light: #f6f4fa;
       --dark: #111;
       --gray: #666;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
-      color: var(--dark);
       background: #fff;
+      color: var(--dark);
       line-height: 1.6;
     }
 
-    /* NAVBAR */
     header {
       position: fixed;
-      top: 0;
       width: 100%;
-      background: white;
+      background: #fff;
       border-bottom: 1px solid #eee;
       z-index: 1000;
     }
@@ -51,7 +44,6 @@
 
     .logo {
       font-weight: 700;
-      font-size: 1.2rem;
       color: var(--purple);
     }
 
@@ -67,53 +59,49 @@
       font-weight: 500;
     }
 
-    nav a:hover {
-      color: var(--purple);
-    }
+    nav a:hover { color: var(--purple); }
 
     /* HERO */
     .hero {
-      height: 100vh;
-      display: flex;
+      padding-top: 90px;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: var(--light-purple);
-      padding: 0 1.5rem;
+      background: var(--light);
+      padding-left: 5%;
+      padding-right: 5%;
+      gap: 3rem;
     }
 
-    .hero-content {
-      max-width: 700px;
-    }
-
-    .hero h1 {
+    .hero-text h1 {
       font-size: 3.5rem;
-      font-weight: 700;
       color: var(--purple);
       margin-bottom: 1rem;
     }
 
-    .hero p {
-      font-size: 1.2rem;
+    .hero-text p {
       color: var(--gray);
       margin-bottom: 2rem;
+      font-size: 1.1rem;
     }
 
     .btn {
-      display: inline-block;
       padding: 0.9rem 2.2rem;
       background: var(--purple);
       color: white;
       border-radius: 50px;
-      font-weight: 600;
       text-decoration: none;
+      font-weight: 600;
     }
 
-    .btn:hover {
-      background: var(--orange);
+    .btn:hover { background: var(--orange); }
+
+    .hero-img img {
+      width: 100%;
+      max-width: 480px;
     }
 
-    /* SECTIONS */
     section {
       max-width: 1200px;
       margin: auto;
@@ -122,50 +110,36 @@
 
     h2 {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
+      font-size: 2.4rem;
       color: var(--purple);
+      margin-bottom: 3rem;
     }
 
-    /* REWARDS */
-    .cards {
+    /* CARDS */
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
     }
 
     .card {
-      border: 1px solid #eee;
       border-radius: 20px;
       padding: 2rem;
       text-align: center;
-    }
-
-    .card h3 {
-      margin-bottom: 1rem;
-      color: var(--purple);
-    }
-
-    .card p {
-      color: var(--gray);
+      border: 1px solid #eee;
     }
 
     /* MENU */
-    .menu-item {
-      padding: 2rem;
-      border-radius: 20px;
-      background: #fafafa;
-      text-align: center;
-    }
-
-    .menu-item h3 {
-      margin-bottom: 0.5rem;
+    .menu-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 1rem;
     }
 
     .price {
-      margin-top: 0.8rem;
-      font-weight: 600;
+      margin-top: 0.5rem;
       color: var(--orange);
+      font-weight: 600;
     }
 
     /* LOCATION */
@@ -175,29 +149,24 @@
       text-align: center;
     }
 
-    .location p {
-      opacity: 0.9;
-      margin-top: 1rem;
-    }
-
-    /* FOOTER */
     footer {
       background: #111;
       color: white;
       text-align: center;
       padding: 2rem;
-      font-size: 0.9rem;
     }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.4rem;
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
 
-      nav ul {
-        display: none;
+      .hero-img img {
+        margin: auto;
       }
+
+      nav ul { display: none; }
     }
   </style>
 </head>
@@ -217,48 +186,57 @@
 </header>
 
 <section id="home" class="hero">
-  <div class="hero-content">
+  <div class="hero-text">
     <h1>Feel Good Energy</h1>
-    <p>Organic açaí bowls crafted fresh in Berkeley. Fuel your day the OakBerry way.</p>
+    <p>Organic açaí bowls made fresh every day. Simple ingredients. Real fuel.</p>
     <a href="#rewards" class="btn">Join Bear Rewards</a>
+  </div>
+
+  <div class="hero-img">
+    <img src="https://oakberry.com/wp-content/uploads/2022/05/hero-bowl.png" alt="OakBerry Açaí Bowl">
   </div>
 </section>
 
 <section id="rewards">
   <h2>Bear Rewards</h2>
-  <div class="cards">
+  <div class="grid">
     <div class="card">
       <h3>10% Student Discount</h3>
-      <p>Available for UC Berkeley students with valid ID.</p>
+      <p>Available for UC Berkeley students with ID.</p>
     </div>
     <div class="card">
       <h3>Earn Points</h3>
-      <p>Get 1 point per dollar and redeem for free bowls.</p>
+      <p>1 point per dollar. Redeem for free bowls.</p>
     </div>
     <div class="card">
-      <h3>Easy Sign-Up</h3>
-      <p>Join in seconds. No app required.</p>
+      <h3>No App Needed</h3>
+      <p>Fast sign-up. No downloads.</p>
     </div>
   </div>
 </section>
 
 <section id="menu">
-  <h2>Popular Items</h2>
-  <div class="cards">
-    <div class="menu-item">
-      <h3>Classic Açaí Bowl</h3>
+  <h2>Popular Bowls</h2>
+  <div class="grid">
+    <div class="menu-card">
+      <img src="https://oakberry.com/wp-content/uploads/2022/04/the-oak.png" alt="The Oak Bowl">
+      <h3>The Oak</h3>
       <p>Açaí, granola, banana, strawberry</p>
       <div class="price">$9.99</div>
     </div>
-    <div class="menu-item">
-      <h3>Tropical Bowl</h3>
+
+    <div class="menu-card">
+      <img src="https://oakberry.com/wp-content/uploads/2022/04/trop.png" alt="Tropical Bowl">
+      <h3>Tropical</h3>
       <p>Açaí, mango, pineapple, coconut</p>
       <div class="price">$10.49</div>
     </div>
-    <div class="menu-item">
-      <h3>Build Your Own</h3>
-      <p>Choose your base and unlimited toppings</p>
-      <div class="price">$8.99</div>
+
+    <div class="menu-card">
+      <img src="https://oakberry.com/wp-content/uploads/2022/04/works.png" alt="Works Bowl">
+      <h3>The Works</h3>
+      <p>All toppings. Maximum energy.</p>
+      <div class="price">$11.49</div>
     </div>
   </div>
 </section>
