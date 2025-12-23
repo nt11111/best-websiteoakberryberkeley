@@ -1,136 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OakBerry Açaí Berkeley | Bear Rewards for Cal Students</title>
-    <meta name="description" content="UC Berkeley exclusive OakBerry Açaí – 10% off + earn points with Bear Rewards!">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Poppins',sans-serif;color:#333;overflow-x:hidden}
-        :root{--p:#7B2CBF;--o:#FF6B35;--g:linear-gradient(135deg,var(--p),var(--o))}
-        header{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);z-index:1000;padding:1rem 0;box-shadow:0 2px 15px rgba(0,0,0,0.1)}
-        nav{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
-        .logo{font-size:1.8rem;font-weight:700;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .nav-links{display:flex;gap:2rem;list-style:none}
-        .nav-links a{text-decoration:none;color:#333;font-weight:600;transition:.3s}
-        .nav-links a:hover{color:var(--p)}
-        .mobile-toggle{display:none;font-size:1.8rem;cursor:pointer}
-        .hero{height:100vh;background:var(--g),url('https://images.unsplash.com/photo-1621786030484-4c855eed6974?q=80&w=2000') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;position:relative}
-        .hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.5)}
-        .hero-content{position:relative;z-index:2;max-width:900px;padding:0 2rem}
-        .hero h1{font-size:4.5rem;font-weight:700;margin-bottom:1rem;text-shadow:0 4px 10px rgba(0,0,0,0.6)}
-        .hero p{font-size:1.6rem;margin:1.5rem 0}
-        .btn{display:inline-block;padding:1rem 2.5rem;background:white;color:var(--p);font-weight:700;border-radius:50px;text-decoration:none;margin:1rem;transition:.3s}
-        .btn:hover{transform:scale(1.08)}
-        .btn-orange{background:var(--o);color:white}
-        section{padding:6rem 2rem;max-width:1200px;margin:0 auto}
-        h2{font-size:3rem;text-align:center;margin-bottom:3rem;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .rewards-grid,.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
-        .card{background:white;padding:2rem;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center;transition:.3s}
-        .card:hover{transform:translateY(-10px)}
-        .card h3{color:var(--o);margin-bottom:1rem;font-size:1.6rem}
-        .price{font-size:1.5rem;font-weight:700;color:var(--o)}
-        .location{background:var(--g);color:white;text-align:center;border-radius:20px;margin:4rem 0;padding:4rem 2rem}
-        .map-container{max-width:1000px;margin:2rem auto;border-radius:20px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,0.4)}
-        footer{background:#111;color:#fff;text-align:center;padding:3rem}
-        @media(max-width:768px){
-            .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:white;flex-direction:column;padding:1rem 0;box-shadow:0 10px 20px rgba(0,0,0,0.1)}
-            .nav-links.show{display:flex}
-            .mobile-toggle{display:block}
-            .hero h1{font-size:2.8rem}
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OakBerry Açaí Berkeley</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --purple: #5b2d8b;
+      --light-purple: #f4effa;
+      --orange: #ff6a00;
+      --dark: #111;
+      --gray: #666;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      border-bottom: 1px solid #eee;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--purple);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--purple);
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--light-purple);
+      padding: 0 1.5rem;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: var(--purple);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--orange);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 5rem 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--purple);
+    }
+
+    /* REWARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      border: 1px solid #eee;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .card h3 {
+      margin-bottom: 1rem;
+      color: var(--purple);
+    }
+
+    .card p {
+      color: var(--gray);
+    }
+
+    /* MENU */
+    .menu-item {
+      padding: 2rem;
+      border-radius: 20px;
+      background: #fafafa;
+      text-align: center;
+    }
+
+    .menu-item h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      margin-top: 0.8rem;
+      font-weight: 600;
+      color: var(--orange);
+    }
+
+    /* LOCATION */
+    .location {
+      background: var(--purple);
+      color: white;
+      text-align: center;
+    }
+
+    .location p {
+      opacity: 0.9;
+      margin-top: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <div class="logo">OakBerry Berkeley</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#rewards">Bear Rewards</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#location">Location</a></li>
-            </ul>
-            <div class="mobile-toggle">☰</div>
-        </nav>
-    </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Fresh Açaí, Berkeley Vibes</h1>
-            <p>Exclusive Bear Rewards for UC Berkeley students — 10% off + earn points!</p>
-            <a href="#rewards" class="btn">Join Bear Rewards →</a>
-        </div>
-    </section>
+<header>
+  <nav>
+    <div class="logo">OakBerry Berkeley</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#rewards">Rewards</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <section id="rewards">
-        <h2>Bear Rewards – Cal Students Only</h2>
-        <div class="rewards-grid">
-            <div class="card">
-                <h3>10% Off Every Bowl</h3>
-                <p>Show your UC Berkeley student ID or .edu email</p>
-            </div>
-            <div class="card">
-                <h3>Earn 1 Point per $1 Spent</h3>
-                <p>100 points = FREE signature bowl</p>
-            </div>
-            <div class="card">
-                <h3>Sign Up in 10 Seconds</h3>
-                <p><a href="https://forms.gle/YOUR-FORM-LINK-HERE" target="_blank" class="btn btn-orange">Join Now (Free)</a></p>
-                <small>Replace link above with your real Google Form</small>
-            </div>
-        </div>
-    </section>
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1>Feel Good Energy</h1>
+    <p>Organic açaí bowls crafted fresh in Berkeley. Fuel your day the OakBerry way.</p>
+    <a href="#rewards" class="btn">Join Bear Rewards</a>
+  </div>
+</section>
 
-    <section id="menu">
-        <h2>Menu Highlights</h2>
-        <div class="menu-grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1621786030484-4c855eed6974?w=600" alt="Açaí Bowl" style="width:100%;border-radius:15px">
-                <h3>Classic Açaí Bowl</h3>
-                <p class="price">$10.99</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1604085572504-a392ddf0d86a?w=600" alt="PB Bowl" style="width:100%;border-radius:15px">
-                <h3>Peanut Butter Power</h3>
-                <p class="price">$11.99</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1519985176271-4f4e8591084b?w=600" alt="Smoothie" style="width:100%;border-radius:15px">
-                <h3>Tropical Smoothie</h3>
-                <p class="price">$8.50</p>
-            </div>
-        </div>
-    </section>
+<section id="rewards">
+  <h2>Bear Rewards</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>10% Student Discount</h3>
+      <p>Available for UC Berkeley students with valid ID.</p>
+    </div>
+    <div class="card">
+      <h3>Earn Points</h3>
+      <p>Get 1 point per dollar and redeem for free bowls.</p>
+    </div>
+    <div class="card">
+      <h3>Easy Sign-Up</h3>
+      <p>Join in seconds. No app required.</p>
+    </div>
+  </div>
+</section>
 
-    <section id="location" class="location">
-        <h2>Find Us Right Off Campus</h2>
-        <p style="font-size:1.3rem;margin-bottom:1rem">2510 Bancroft Way, Berkeley, CA 94704<br>2-minute walk from Sproul Plaza</p>
-        <p style="font-size:1.5rem;margin:2rem 0">Mon–Fri 8AM–9PM · Sat–Sun 9AM–8PM</p>
+<section id="menu">
+  <h2>Popular Items</h2>
+  <div class="cards">
+    <div class="menu-item">
+      <h3>Classic Açaí Bowl</h3>
+      <p>Açaí, granola, banana, strawberry</p>
+      <div class="price">$9.99</div>
+    </div>
+    <div class="menu-item">
+      <h3>Tropical Bowl</h3>
+      <p>Açaí, mango, pineapple, coconut</p>
+      <div class="price">$10.49</div>
+    </div>
+    <div class="menu-item">
+      <h3>Build Your Own</h3>
+      <p>Choose your base and unlimited toppings</p>
+      <div class="price">$8.99</div>
+    </div>
+  </div>
+</section>
 
-        <!-- REAL GOOGLE MAPS EMBED (centered perfectly on the store) -->
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1008.9874021335912!2d-122.2593746238999!3d37.868529997944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80857c829e5c7e83%3A0x8f8f8f8f8f8f8f8f!2s2510%20Bancroft%20Way%2C%20Berkeley%2C%20CA%2094704!5e0!3m2!1sen!2sus!4v1735771234567!5m2!1sen!2sus" 
-                width="100%" 
-                height="500" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
+<section id="location" class="location">
+  <h2>Visit Us</h2>
+  <p>2510 Bancroft Way, Berkeley, CA</p>
+  <p>Mon–Fri 8AM–8PM • Sat–Sun 9AM–7PM</p>
+</section>
 
-    <footer>
-        <p>© 2025 OakBerry Açaí Berkeley • Made for Cal students</p>
-    </footer>
+<footer>
+  © 2025 OakBerry Açaí Berkeley • Go Bears 🐻
+</footer>
 
-    <script>
-        document.querySelector('.mobile-toggle').addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('show'));
-        document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})}));
-    </script>
 </body>
 </html>
