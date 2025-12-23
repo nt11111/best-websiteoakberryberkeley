@@ -14,6 +14,13 @@
       --light: #f6f4fa;
       --dark: #111;
       --gray: #666;
+      .map-container {
+  max-width: 900px;
+  margin: 2rem auto 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -243,8 +250,20 @@
 
 <section id="location" class="location">
   <h2>Visit Us</h2>
-  <p>2510 Bancroft Way, Berkeley, CA</p>
+  <p>2244 Bancroft Way, Berkeley, CA 94704</p>
   <p>Mon–Fri 8AM–8PM • Sat–Sun 9AM–7PM</p>
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps?q=2244+Bancroft+Way,+Berkeley,+CA+94704&output=embed"
+      width="100%"
+      height="350"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
 </section>
 
 <footer>
