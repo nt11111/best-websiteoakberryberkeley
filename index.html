@@ -1,301 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OakBerry Açaí Berkeley</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OakBerry Açaí Berkeley</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* ================= VARIABLES ================= */
-    :root {
-      --purple: #5b2d8b;
-      --orange: #ff6a00;
-      --light: #f6f4fa;
-      --dark: #111;
-      --gray: #666;
-    }
+<style>
+:root {
+  --purple: #5b2d8b;
+  --purple-light: #7b4bc2;
+  --orange: #ff6a00;
+  --pink: #ffb3c7;
+  --light: #f7f3fb;
+  --dark: #111;
+  --gray: #666;
+}
 
-    /* ================= RESET ================= */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins',sans-serif; color:var(--dark); }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #fff;
-      color: var(--dark);
-      line-height: 1.6;
-    }
+/* NAV */
+header {
+  position:fixed;
+  width:100%;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  z-index:1000;
+}
+nav {
+  max-width:1200px;
+  margin:auto;
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo { font-weight:700; color:var(--purple); }
+nav ul {
+  list-style:none;
+  display:flex;
+  gap:2rem;
+}
+nav a {
+  text-decoration:none;
+  color:var(--dark);
+  font-weight:500;
+}
+.menu-toggle {
+  display:none;
+  font-size:1.8rem;
+  cursor:pointer;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+/* HERO */
+.hero {
+  padding-top:100px;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  align-items:center;
+  padding:5% 6%;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at top left, var(--pink), transparent 50%),
+    linear-gradient(135deg, var(--light), #ffffff);
+}
 
-    /* ================= NAV ================= */
-    header {
-      position: fixed;
-      width: 100%;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      z-index: 1000;
-    }
+/* Decorative blobs */
+.hero::before,
+.hero::after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  opacity:0.25;
+}
+.hero::before {
+  width:420px; height:420px;
+  background:var(--purple-light);
+  top:-120px; left:-120px;
+}
+.hero::after {
+  width:320px; height:320px;
+  background:var(--orange);
+  bottom:-100px; right:-100px;
+}
 
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.hero-text {
+  position:relative;
+}
+.hero-text h1 {
+  font-size:3.8rem;
+  color:var(--purple);
+  margin-bottom:1rem;
+}
+.hero-text p {
+  font-size:1.15rem;
+  color:var(--gray);
+  max-width:500px;
+  margin-bottom:2rem;
+}
+.hero-buttons {
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.btn {
+  padding:0.9rem 2.2rem;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  transition:all 0.3s ease;
+}
+.btn-primary {
+  background:var(--purple);
+  color:#fff;
+}
+.btn-primary:hover { background:var(--orange); transform:translateY(-3px); }
+.btn-outline {
+  border:2px solid var(--purple);
+  color:var(--purple);
+}
+.btn-outline:hover {
+  background:var(--purple);
+  color:#fff;
+}
 
-    .logo {
-      font-weight: 700;
-      color: var(--purple);
-      font-size: 1.2rem;
-      animation: fadeDown 0.8s ease forwards;
-    }
+.hero-img img {
+  width:100%;
+  max-width:480px;
+  position:relative;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
+/* SECTIONS */
+section {
+  max-width:1200px;
+  margin:auto;
+  padding:5rem 2rem;
+}
+h2 {
+  text-align:center;
+  font-size:2.4rem;
+  color:var(--purple);
+  margin-bottom:3rem;
+}
 
-    nav a {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2rem;
+}
 
-    nav a:hover {
-      color: var(--purple);
-    }
+/* CARDS */
+.card {
+  padding:2rem;
+  border-radius:20px;
+  border:1px solid #eee;
+  text-align:center;
+}
 
-    /* ================= HERO ================= */
-    .hero {
-      padding-top: 90px;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 3rem;
-      background: var(--light);
-      padding-left: 5%;
-      padding-right: 5%;
-    }
+/* MENU CARDS */
+.menu-card {
+  background:#fff;
+  border-radius:22px;
+  padding:1.5rem;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:all 0.4s ease;
+}
+.menu-card:hover {
+  transform:translateY(-10px);
+  box-shadow:0 25px 45px rgba(0,0,0,0.18);
+}
+.menu-card img {
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:1rem;
+}
+.menu-card h3 { color:var(--purple); }
+.price { color:var(--orange); font-weight:600; margin-top:0.5rem; }
 
-    .hero-text {
-      animation: fadeLeft 1s ease forwards;
-    }
+/* LOCATION */
+.location {
+  background:var(--purple);
+  color:#fff;
+  text-align:center;
+}
+.map-container {
+  max-width:900px;
+  margin:2rem auto 0;
+  border-radius:20px;
+  overflow:hidden;
+}
 
-    .hero-text h1 {
-      font-size: 3.5rem;
-      color: var(--purple);
-      margin-bottom: 1rem;
-    }
+/* FOOTER */
+footer {
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:2rem;
+}
 
-    .hero-text p {
-      color: var(--gray);
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
+/* SCROLL ANIMATIONS */
+.animate {
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
+}
+.animate.show {
+  opacity:1;
+  transform:translateY(0);
+}
 
-    .btn {
-      padding: 0.9rem 2.2rem;
-      background: var(--purple);
-      color: #fff;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.3s ease, background 0.3s ease;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background: var(--orange);
-      transform: translateY(-3px);
-    }
-
-    .hero-img {
-      animation: fadeRight 1s ease forwards;
-    }
-
-    .hero-img img {
-      width: 100%;
-      max-width: 480px;
-    }
-
-    /* ================= SECTIONS ================= */
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 5rem 2rem;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      color: var(--purple);
-      margin-bottom: 3rem;
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    /* ================= GRID ================= */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-
-    /* ================= INFO CARDS ================= */
-    .card {
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid #eee;
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    /* ================= MENU CARDS ================= */
-    .menu-card {
-      background: #fff;
-      border-radius: 22px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 45px rgba(0,0,0,0.18);
-    }
-
-    .menu-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 16px;
-      margin-bottom: 1rem;
-      transition: transform 0.4s ease;
-    }
-
-    .menu-card:hover img {
-      transform: scale(1.08);
-    }
-
-    .menu-card h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      color: var(--purple);
-    }
-
-    .menu-card p {
-      font-size: 0.95rem;
-      color: var(--gray);
-    }
-
-    .price {
-      margin-top: 0.8rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--orange);
-    }
-
-    /* ================= LOCATION ================= */
-    .location {
-      background: var(--purple);
-      color: #fff;
-      text-align: center;
-    }
-
-    .map-container {
-      max-width: 900px;
-      margin: 2rem auto 0;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-      animation: fadeUp 1s ease forwards;
-    }
-
-    /* ================= FOOTER ================= */
-    footer {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-    }
-
-    /* ================= ANIMATIONS ================= */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes fadeRight {
-      from {
-        opacity: 0;
-        transform: translateX(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ================= MOBILE ================= */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-img img {
-        margin: auto;
-      }
-
-      nav ul {
-        display: none;
-      }
-    }
-  </style>
+/* MOBILE */
+@media(max-width:900px) {
+  .hero { grid-template-columns:1fr; text-align:center; }
+  nav ul {
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    display:none;
+    padding:1rem 0;
+  }
+  nav ul.show { display:flex; }
+  .menu-toggle { display:block; }
+}
+</style>
 </head>
 
 <body>
@@ -303,6 +243,7 @@
 <header>
   <nav>
     <div class="logo">OakBerry Berkeley</div>
+    <div class="menu-toggle">☰</div>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#rewards">Rewards</a></li>
@@ -313,81 +254,77 @@
 </header>
 
 <section id="home" class="hero">
-  <div class="hero-text">
+  <div class="hero-text animate">
     <h1>Feel Good Energy</h1>
     <p>Organic açaí bowls made fresh every day. Simple ingredients. Real fuel.</p>
-    <a href="#rewards" class="btn">Join Bear Rewards</a>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">Order Now</a>
+      <a href="#rewards" class="btn btn-outline">Join Bear Rewards</a>
+    </div>
   </div>
 
-  <div class="hero-img">
-    <img src="images/oakberry-classic.webp" alt="OakBerry Classic Açaí Bowl">
-  </div>
-</section>
-
-<section id="rewards">
-  <h2>Bear Rewards</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>10% Student Discount</h3>
-      <p>Available for UC Berkeley students with ID.</p>
-    </div>
-    <div class="card">
-      <h3>Earn Points</h3>
-      <p>1 point per dollar. Redeem for free bowls.</p>
-    </div>
-    <div class="card">
-      <h3>No App Needed</h3>
-      <p>Fast sign-up. No downloads.</p>
-    </div>
+  <div class="hero-img animate">
+    <img src="images/oakberry-classic.webp" alt="OakBerry Bowl">
   </div>
 </section>
 
 <section id="menu">
-  <h2>Our Bowls</h2>
+  <h2 class="animate">Our Bowls</h2>
   <div class="grid">
-    <div class="menu-card">
-      <img src="images/CRUNCHY.webp" alt="Crunchy Açaí Bowl">
+    <div class="menu-card animate">
+      <img src="images/CRUNCHY.webp">
       <h3>Crunchy</h3>
       <p>Açaí, granola, banana, peanut butter</p>
       <div class="price">$10.49</div>
+      <a class="btn btn-primary" style="margin-top:1rem;">Order</a>
     </div>
 
-    <div class="menu-card">
-      <img src="images/ORIGINAL.webp" alt="The Original Açaí Bowl">
+    <div class="menu-card animate">
+      <img src="images/ORIGINAL.webp">
       <h3>The Original</h3>
       <p>Pure açaí base with classic toppings</p>
       <div class="price">$9.99</div>
+      <a class="btn btn-primary" style="margin-top:1rem;">Order</a>
     </div>
 
-    <div class="menu-card">
-      <img src="images/MATCHA.webp" alt="Matcha Bowl">
+    <div class="menu-card animate">
+      <img src="images/MATCHA.webp">
       <h3>Matcha</h3>
       <p>Matcha base, banana, granola, honey</p>
       <div class="price">$10.99</div>
+      <a class="btn btn-primary" style="margin-top:1rem;">Order</a>
     </div>
   </div>
 </section>
 
 <section id="location" class="location">
-  <h2>Visit Us</h2>
+  <h2 class="animate">Visit Us</h2>
   <p>2244 Bancroft Way, Berkeley, CA 94704</p>
-  <p>Mon–Fri 8AM–8PM • Sat–Sun 9AM–7PM</p>
-
-  <div class="map-container">
-    <iframe
-      src="https://www.google.com/maps?q=2244+Bancroft+Way,+Berkeley,+CA+94704&output=embed"
-      width="100%"
-      height="350"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
+  <div class="map-container animate">
+    <iframe src="https://www.google.com/maps?q=2244+Bancroft+Way,+Berkeley,+CA+94704&output=embed"
+      width="100%" height="350" style="border:0;" loading="lazy"></iframe>
   </div>
 </section>
 
 <footer>
   © 2025 OakBerry Açaí Berkeley • Go Bears 🐻
 </footer>
+
+<script>
+/* MOBILE MENU */
+document.querySelector('.menu-toggle').onclick = () => {
+  document.querySelector('nav ul').classList.toggle('show');
+};
+
+/* SCROLL ANIMATIONS */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('show');
+  });
+},{ threshold:0.15 });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
