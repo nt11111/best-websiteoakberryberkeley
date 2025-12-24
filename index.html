@@ -8,22 +8,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ================= VARIABLES ================= */
     :root {
       --purple: #5b2d8b;
       --orange: #ff6a00;
       --light: #f6f4fa;
       --dark: #111;
       --gray: #666;
-      .map-container {
-  max-width: 900px;
-  margin: 2rem auto 0;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-}
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -32,6 +31,11 @@
       line-height: 1.6;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ================= NAV ================= */
     header {
       position: fixed;
       width: 100%;
@@ -52,6 +56,8 @@
     .logo {
       font-weight: 700;
       color: var(--purple);
+      font-size: 1.2rem;
+      animation: fadeDown 0.8s ease forwards;
     }
 
     nav ul {
@@ -64,21 +70,28 @@
       text-decoration: none;
       color: var(--dark);
       font-weight: 500;
+      transition: color 0.3s ease;
     }
 
-    nav a:hover { color: var(--purple); }
+    nav a:hover {
+      color: var(--purple);
+    }
 
-    /* HERO */
+    /* ================= HERO ================= */
     .hero {
       padding-top: 90px;
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
+      gap: 3rem;
       background: var(--light);
       padding-left: 5%;
       padding-right: 5%;
-      gap: 3rem;
+    }
+
+    .hero-text {
+      animation: fadeLeft 1s ease forwards;
     }
 
     .hero-text h1 {
@@ -96,19 +109,29 @@
     .btn {
       padding: 0.9rem 2.2rem;
       background: var(--purple);
-      color: white;
+      color: #fff;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
+      transition: transform 0.3s ease, background 0.3s ease;
+      display: inline-block;
     }
 
-    .btn:hover { background: var(--orange); }
+    .btn:hover {
+      background: var(--orange);
+      transform: translateY(-3px);
+    }
+
+    .hero-img {
+      animation: fadeRight 1s ease forwards;
+    }
 
     .hero-img img {
       width: 100%;
       max-width: 480px;
     }
 
+    /* ================= SECTIONS ================= */
     section {
       max-width: 1200px;
       margin: auto;
@@ -120,49 +143,144 @@
       font-size: 2.4rem;
       color: var(--purple);
       margin-bottom: 3rem;
+      animation: fadeUp 0.8s ease forwards;
     }
 
-    /* CARDS */
+    /* ================= GRID ================= */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
     }
 
+    /* ================= INFO CARDS ================= */
     .card {
       border-radius: 20px;
       padding: 2rem;
       text-align: center;
       border: 1px solid #eee;
+      animation: fadeUp 0.8s ease forwards;
     }
 
-    /* MENU */
+    /* ================= MENU CARDS ================= */
+    .menu-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.18);
+    }
+
     .menu-card img {
       width: 100%;
-      border-radius: 15px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
       margin-bottom: 1rem;
+      transition: transform 0.4s ease;
+    }
+
+    .menu-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .menu-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: var(--purple);
+    }
+
+    .menu-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
     }
 
     .price {
-      margin-top: 0.5rem;
-      color: var(--orange);
+      margin-top: 0.8rem;
+      font-size: 1.05rem;
       font-weight: 600;
+      color: var(--orange);
     }
 
-    /* LOCATION */
+    /* ================= LOCATION ================= */
     .location {
       background: var(--purple);
-      color: white;
+      color: #fff;
       text-align: center;
     }
 
+    .map-container {
+      max-width: 900px;
+      margin: 2rem auto 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    /* ================= FOOTER ================= */
     footer {
       background: #111;
-      color: white;
+      color: #fff;
       text-align: center;
       padding: 2rem;
+      font-size: 0.9rem;
     }
 
+    /* ================= ANIMATIONS ================= */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= MOBILE ================= */
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
@@ -173,7 +291,9 @@
         margin: auto;
       }
 
-      nav ul { display: none; }
+      nav ul {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -223,27 +343,27 @@
 </section>
 
 <section id="menu">
-  <h2>Popular Bowls</h2>
+  <h2>Our Bowls</h2>
   <div class="grid">
     <div class="menu-card">
-      <img src="https://oakberry.com/wp-content/uploads/2022/04/the-oak.png" alt="The Oak Bowl">
-      <h3>The Oak</h3>
-      <p>Açaí, granola, banana, strawberry</p>
-      <div class="price">$9.99</div>
-    </div>
-
-    <div class="menu-card">
-      <img src="https://oakberry.com/wp-content/uploads/2022/04/trop.png" alt="Tropical Bowl">
-      <h3>Tropical</h3>
-      <p>Açaí, mango, pineapple, coconut</p>
+      <img src="images/CRUNCHY.webp" alt="Crunchy Açaí Bowl">
+      <h3>Crunchy</h3>
+      <p>Açaí, granola, banana, peanut butter</p>
       <div class="price">$10.49</div>
     </div>
 
     <div class="menu-card">
-      <img src="https://oakberry.com/wp-content/uploads/2022/04/works.png" alt="Works Bowl">
-      <h3>The Works</h3>
-      <p>All toppings. Maximum energy.</p>
-      <div class="price">$11.49</div>
+      <img src="images/ORIGINAL.webp" alt="The Original Açaí Bowl">
+      <h3>The Original</h3>
+      <p>Pure açaí base with classic toppings</p>
+      <div class="price">$9.99</div>
+    </div>
+
+    <div class="menu-card">
+      <img src="images/MATCHA.webp" alt="Matcha Bowl">
+      <h3>Matcha</h3>
+      <p>Matcha base, banana, granola, honey</p>
+      <div class="price">$10.99</div>
     </div>
   </div>
 </section>
@@ -260,8 +380,7 @@
       height="350"
       style="border:0;"
       allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
+      loading="lazy">
     </iframe>
   </div>
 </section>
