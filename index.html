@@ -1,281 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OakBerry Açaí Berkeley</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OakBerry Berkeley</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --purple:#5b2d8b;
-  --purple-dark:#3f1e66;
-  --berry:#9b4dcc;
-  --orange:#ff6a00;
-  --cream:#faf7ff;
-  --pink:#ffd6e4;
-  --gray:#666;
-  --dark:#111;
+:root {
+  --purple: #5b2d8b;
+  --purple-dark: #3f1f63;
+  --orange: #ff6a00;
+  --cream: #f8f4ff;
+  --dark: #111;
+  --gray: #666;
 }
 
 /* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Poppins',sans-serif;
-  background:#fff;
-  color:var(--dark);
-  overflow-x:hidden;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: var(--dark);
+  overflow-x: hidden;
 }
 
 /* NAV */
-header{
-  position:fixed;
-  width:100%;
-  z-index:1000;
-  background:rgba(255,255,255,0.75);
-  backdrop-filter:blur(16px);
+header {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  z-index: 999;
 }
-nav{
-  max-width:1300px;
-  margin:auto;
-  padding:1.1rem 2rem;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.logo{
-  font-weight:700;
-  font-size:1.1rem;
-  color:var(--purple);
+.logo {
+  font-weight: 700;
+  color: var(--purple);
 }
-nav ul{
-  display:flex;
-  gap:2.2rem;
-  list-style:none;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
 }
-nav a{
-  text-decoration:none;
-  color:var(--dark);
-  font-weight:500;
+nav a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
 }
-.menu-toggle{
-  display:none;
-  font-size:1.7rem;
-  cursor:pointer;
+.order-btn {
+  background: linear-gradient(135deg, var(--orange), #ff914d);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border-radius: 40px;
+  box-shadow: 0 12px 30px rgba(255,106,0,0.5);
 }
+.order-btn:hover { transform: translateY(-3px); }
 
-/* HERO (FULL BLEED) */
-.hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  align-items:center;
-  padding:7%;
-  background:
-    radial-gradient(circle at top left, var(--pink), transparent 45%),
-    radial-gradient(circle at bottom right, #e6dcff, transparent 50%),
-    linear-gradient(135deg, var(--cream), #ffffff);
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding-top: 100px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  color: white;
+  padding-left: 6%;
+  padding-right: 6%;
 }
-.hero-text h1{
-  font-size:4.6rem;
-  line-height:1.02;
-  color:var(--purple);
+.hero h1 {
+  font-size: 4rem;
+  line-height: 1.1;
 }
-.hero-text p{
-  max-width:540px;
-  margin:1.8rem 0 2.8rem;
-  font-size:1.2rem;
-  color:var(--gray);
+.hero p {
+  margin: 1.5rem 0 2.5rem;
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.85);
 }
-.hero-buttons{
-  display:flex;
-  gap:1.2rem;
-  flex-wrap:wrap;
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
 }
-.btn{
-  padding:1rem 2.6rem;
-  border-radius:50px;
-  font-weight:600;
-  text-decoration:none;
-  transition:all 0.35s ease;
+.btn-primary {
+  background: linear-gradient(135deg, var(--orange), #ff8c3a);
+  color: white;
+  padding: 1rem 2.6rem;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 20px 45px rgba(255,106,0,0,0.55);
 }
-.btn-primary{
-  background:linear-gradient(135deg,var(--purple),var(--berry));
-  color:#fff;
+.btn-secondary {
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2.6rem;
+  border-radius: 50px;
 }
-.btn-primary:hover{
-  transform:translateY(-6px);
-  box-shadow:0 22px 50px rgba(0,0,0,0.3);
+.hero-img img {
+  width: 100%;
+  max-width: 520px;
+  animation: float 6s ease-in-out infinite;
 }
-.btn-outline{
-  border:2px solid var(--purple);
-  color:var(--purple);
-}
-.btn-outline:hover{
-  background:var(--purple);
-  color:#fff;
-}
-.hero-img{
-  animation:float 6s ease-in-out infinite;
-}
-.hero-img img{
-  width:100%;
-  max-width:520px;
-  filter:drop-shadow(0 50px 80px rgba(0,0,0,0.35));
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 /* FEATURE STRIP */
-.features{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:2rem;
-  padding:4rem 2rem;
-  max-width:1200px;
-  margin:auto;
+.features {
+  background: var(--cream);
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 1rem;
 }
-.feature{
-  text-align:center;
-}
-.feature h3{
-  color:var(--purple);
-  margin-bottom:0.4rem;
+.feature {
+  text-align: center;
+  font-weight: 600;
+  color: var(--purple);
 }
 
-/* SECTION BASE */
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:6rem 2rem;
+/* SECTION */
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 6rem 2rem;
 }
-h2{
-  text-align:center;
-  font-size:2.8rem;
-  color:var(--purple);
-  margin-bottom:3.5rem;
+h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  color: var(--purple);
 }
 
-/* REWARDS BAND */
-.rewards-band{
-  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-  color:#fff;
+/* REWARDS */
+#rewards {
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  color: white;
 }
-.rewards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:2.5rem;
+.rewards-title {
+  font-size: 3.4rem;
+  text-align: center;
+  background: linear-gradient(135deg, #fff, #ffd6e4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.rewards-card{
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(10px);
-  padding:2.6rem;
-  border-radius:28px;
-  text-align:center;
+.rewards-title span {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  color: rgba(255,255,255,0.9);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 2rem;
+}
+.card {
+  background: white;
+  color: var(--dark);
+  padding: 2.2rem;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 /* MENU */
-.menu-wrap{
-  background:var(--cream);
+#menu {
+  background: var(--cream);
 }
-.menu-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:3rem;
+.menu-card {
+  background: white;
+  border-radius: 24px;
+  padding: 1.6rem;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.1);
+  transition: 0.4s;
 }
-.menu-card{
-  background:#fff;
-  border-radius:30px;
-  padding:2rem;
-  box-shadow:0 25px 60px rgba(0,0,0,0.12);
-  transition:all 0.5s ease;
-  text-align:center;
+.menu-card:hover { transform: translateY(-12px); }
+.menu-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 18px;
 }
-.menu-card:hover{
-  transform:translateY(-18px);
-  box-shadow:0 45px 90px rgba(0,0,0,0.25);
+.menu-card h3 {
+  margin-top: 1.2rem;
+  color: var(--purple);
 }
-.menu-card img{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  border-radius:24px;
-  margin-bottom:1.4rem;
-}
-.menu-card h3{
-  color:var(--purple);
-}
-.price{
-  margin:1rem 0 1.5rem;
-  font-weight:700;
-  color:var(--orange);
-}
-
-/* CTA */
-.cta{
-  text-align:center;
-  padding:7rem 2rem;
-  background:linear-gradient(135deg,var(--berry),var(--purple));
-  color:#fff;
-}
-.cta h2{
-  color:#fff;
-}
-.cta a{
-  margin-top:2rem;
-  display:inline-block;
+.price {
+  color: var(--orange);
+  font-weight: 700;
+  margin-top: 0.6rem;
 }
 
 /* LOCATION */
-.location{
-  background:#111;
-  color:#fff;
-  text-align:center;
+#location {
+  background: var(--purple);
+  color: white;
+  text-align: center;
 }
-.map-container{
-  max-width:900px;
-  margin:3rem auto 0;
-  border-radius:28px;
-  overflow:hidden;
+.map-container {
+  max-width: 900px;
+  margin: 3rem auto 0;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 /* FOOTER */
-footer{
-  background:#000;
-  color:#fff;
-  text-align:center;
-  padding:2.5rem;
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 2rem;
 }
 
 /* ANIMATIONS */
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-24px);}
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 0.8s;
 }
-.reveal{
-  opacity:0;
-  transform:translateY(60px) scale(0.97);
-  transition:all 1.2s cubic-bezier(.16,1,.3,1);
-}
-.reveal.show{
-  opacity:1;
-  transform:none;
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* MOBILE */
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;text-align:center;}
-  nav ul{
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#fff;
-    flex-direction:column;
-    display:none;
-  }
-  nav ul.show{display:flex;}
-  .menu-toggle{display:block;}
+@media(max-width:900px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-buttons { justify-content: center; flex-wrap: wrap; }
+  nav ul { display: none; }
 }
 </style>
 </head>
@@ -285,111 +248,94 @@ footer{
 <header>
 <nav>
   <div class="logo">OakBerry Berkeley</div>
-  <div class="menu-toggle">☰</div>
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#rewards">Rewards</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#location">Location</a></li>
+    <li><a class="order-btn" href="#">Order Now</a></li>
   </ul>
 </nav>
 </header>
 
 <section id="home" class="hero">
-  <div class="hero-text reveal">
-    <h1>Feel Good<br>Energy</h1>
-    <p>Organic açaí bowls made fresh daily — clean ingredients, real power.</p>
-    <div class="hero-buttons">
-      <a href="#menu" class="btn btn-primary">Order Now</a>
-      <a href="#rewards" class="btn btn-outline">Join Rewards</a>
-    </div>
+<div>
+  <h1 class="reveal">Feel Good Energy</h1>
+  <p class="reveal">Organic açaí bowls made fresh every day. Simple ingredients. Real fuel.</p>
+  <div class="hero-buttons reveal">
+    <a href="#menu" class="btn-primary">Order Now</a>
+    <a href="#rewards" class="btn-secondary">Bear Rewards</a>
   </div>
-  <div class="hero-img reveal">
-    <img src="images/oakberry-classic.webp">
-  </div>
+</div>
+<div class="hero-img">
+  <img src="images/oakberry-classic.webp" alt="OakBerry Bowl">
+</div>
 </section>
 
 <div class="features">
-  <div class="feature reveal">
-    <h3>Organic Açaí</h3>
-    <p>Responsibly sourced</p>
-  </div>
-  <div class="feature reveal">
-    <h3>No Added Sugar</h3>
-    <p>Just natural energy</p>
-  </div>
-  <div class="feature reveal">
-    <h3>Made Fresh</h3>
-    <p>Every single day</p>
-  </div>
+  <div class="feature">🌱 Organic Açaí</div>
+  <div class="feature">🍓 No Added Sugar</div>
+  <div class="feature">⚡ Made Fresh Daily</div>
 </div>
 
-<section id="rewards" class="rewards-band">
-  <h2 class="reveal">Bear Rewards</h2>
-  <div class="rewards-grid">
-    <div class="rewards-card reveal">10% UC Berkeley student discount</div>
-    <div class="rewards-card reveal">Earn points toward free bowls</div>
-    <div class="rewards-card reveal">No app required</div>
-  </div>
+<section id="rewards">
+<h2 class="rewards-title reveal">
+Bear Rewards
+<span>Exclusive perks for UC Berkeley students</span>
+</h2>
+<div class="grid">
+  <div class="card reveal">10% Student Discount</div>
+  <div class="card reveal">Earn Points Every Purchase</div>
+  <div class="card reveal">No App Needed</div>
+</div>
 </section>
 
-<section id="menu" class="menu-wrap">
-  <h2 class="reveal">Our Bowls</h2>
-  <div class="menu-grid">
-    <div class="menu-card reveal">
-      <img src="images/CRUNCHY.webp">
-      <h3>Crunchy</h3>
-      <p>Açaí, granola, banana, peanut butter</p>
-      <div class="price">$10.49</div>
-      <a class="btn btn-primary">Order</a>
-    </div>
-    <div class="menu-card reveal">
-      <img src="images/ORIGINAL.webp">
-      <h3>The Original</h3>
-      <p>Pure açaí with classic toppings</p>
-      <div class="price">$9.99</div>
-      <a class="btn btn-primary">Order</a>
-    </div>
-    <div class="menu-card reveal">
-      <img src="images/MATCHA.webp">
-      <h3>Matcha</h3>
-      <p>Matcha base, banana, granola, honey</p>
-      <div class="price">$10.99</div>
-      <a class="btn btn-primary">Order</a>
-    </div>
+<section id="menu">
+<h2 class="reveal">Our Bowls</h2>
+<div class="grid">
+  <div class="menu-card reveal">
+    <img src="images/CRUNCHY.webp">
+    <h3>Crunchy</h3>
+    <p>Granola, banana, peanut butter</p>
+    <div class="price">$10.49</div>
   </div>
+  <div class="menu-card reveal">
+    <img src="images/ORIGINAL.webp">
+    <h3>The Original</h3>
+    <p>Classic açaí with signature toppings</p>
+    <div class="price">$9.99</div>
+  </div>
+  <div class="menu-card reveal">
+    <img src="images/MATCHA.webp">
+    <h3>Matcha</h3>
+    <p>Matcha base, banana, granola</p>
+    <div class="price">$10.99</div>
+  </div>
+</div>
 </section>
 
-<section class="cta">
-  <h2 class="reveal">Fuel Your Day the OakBerry Way</h2>
-  <a href="#menu" class="btn btn-outline">Order Now</a>
-</section>
-
-<section id="location" class="location">
-  <h2 class="reveal">Visit Us</h2>
-  <p>2244 Bancroft Way, Berkeley, CA</p>
-  <div class="map-container reveal">
-    <iframe src="https://www.google.com/maps?q=2244+Bancroft+Way,+Berkeley,+CA+94704&output=embed"
-      width="100%" height="350" style="border:0;" loading="lazy"></iframe>
-  </div>
+<section id="location">
+<h2 class="reveal">Visit Us</h2>
+<p>2244 Bancroft Way, Berkeley, CA</p>
+<div class="map-container reveal">
+<iframe src="https://www.google.com/maps?q=2244+Bancroft+Way,+Berkeley,+CA&output=embed"
+width="100%" height="350" style="border:0;" loading="lazy"></iframe>
+</div>
 </section>
 
 <footer>
-  © 2025 OakBerry Açaí Berkeley • Go Bears 🐻
+© 2025 OakBerry Berkeley • Go Bears 🐻
 </footer>
 
 <script>
-document.querySelector('.menu-toggle').onclick=()=>{
-  document.querySelector('nav ul').classList.toggle('show');
-};
-
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add('show');
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add('active');
+    }
   });
-},{threshold:0.15});
-
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+});
 </script>
 
 </body>
