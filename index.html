@@ -9,29 +9,35 @@
 
 <style>
 :root {
-  --purple: #5b2d8b;
-  --purple-light: #7b4bc2;
-  --orange: #ff6a00;
-  --pink: #ffb3c7;
-  --light: #f7f3fb;
-  --dark: #111;
-  --gray: #666;
+  --purple:#5b2d8b;
+  --purple-soft:#7b4bc2;
+  --orange:#ff6a00;
+  --pink:#ffd6e4;
+  --cream:#faf7ff;
+  --dark:#111;
+  --gray:#666;
 }
 
 /* RESET */
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { font-family:'Poppins',sans-serif; color:var(--dark); }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#fff;
+  color:var(--dark);
+  overflow-x:hidden;
+}
 
 /* NAV */
-header {
+header{
   position:fixed;
   width:100%;
-  background:#fff;
-  border-bottom:1px solid #eee;
   z-index:1000;
+  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,0.75);
+  border-bottom:1px solid rgba(0,0,0,0.05);
 }
-nav {
+nav{
   max-width:1200px;
   margin:auto;
   padding:1rem 2rem;
@@ -39,190 +45,228 @@ nav {
   justify-content:space-between;
   align-items:center;
 }
-.logo { font-weight:700; color:var(--purple); }
-nav ul {
+.logo{
+  font-weight:700;
+  color:var(--purple);
+}
+nav ul{
   list-style:none;
   display:flex;
   gap:2rem;
 }
-nav a {
+nav a{
   text-decoration:none;
   color:var(--dark);
   font-weight:500;
+  position:relative;
 }
-.menu-toggle {
+nav a::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:2px;
+  background:var(--purple);
+  transition:0.3s;
+}
+nav a:hover::after{width:100%;}
+.menu-toggle{
   display:none;
   font-size:1.8rem;
   cursor:pointer;
 }
 
 /* HERO */
-.hero {
-  padding-top:100px;
+.hero{
   min-height:100vh;
+  padding-top:120px;
   display:grid;
   grid-template-columns:1.2fr 1fr;
   align-items:center;
-  padding:5% 6%;
-  position:relative;
-  overflow:hidden;
+  padding:6%;
   background:
-    radial-gradient(circle at top left, var(--pink), transparent 50%),
-    linear-gradient(135deg, var(--light), #ffffff);
+    radial-gradient(circle at top left, var(--pink), transparent 55%),
+    linear-gradient(135deg, var(--cream), #ffffff);
+  position:relative;
 }
-
-/* Decorative blobs */
-.hero::before,
-.hero::after {
+.hero::before{
   content:"";
   position:absolute;
+  width:520px;
+  height:520px;
+  background:var(--purple-soft);
   border-radius:50%;
-  opacity:0.25;
+  opacity:0.15;
+  top:-180px;
+  right:-180px;
 }
-.hero::before {
-  width:420px; height:420px;
-  background:var(--purple-light);
-  top:-120px; left:-120px;
-}
-.hero::after {
-  width:320px; height:320px;
-  background:var(--orange);
-  bottom:-100px; right:-100px;
-}
-
-.hero-text {
-  position:relative;
-}
-.hero-text h1 {
-  font-size:3.8rem;
+.hero-text h1{
+  font-size:4rem;
   color:var(--purple);
-  margin-bottom:1rem;
+  line-height:1.1;
 }
-.hero-text p {
-  font-size:1.15rem;
+.hero-text p{
+  max-width:520px;
+  margin:1.5rem 0 2.5rem;
   color:var(--gray);
-  max-width:500px;
-  margin-bottom:2rem;
+  font-size:1.15rem;
 }
-.hero-buttons {
+.hero-buttons{
   display:flex;
   gap:1rem;
   flex-wrap:wrap;
 }
-.btn {
-  padding:0.9rem 2.2rem;
+.btn{
+  padding:0.9rem 2.3rem;
   border-radius:50px;
-  text-decoration:none;
   font-weight:600;
+  text-decoration:none;
+  transition:all 0.35s ease;
   display:inline-block;
-  transition:all 0.3s ease;
 }
-.btn-primary {
+.btn-primary{
   background:var(--purple);
   color:#fff;
 }
-.btn-primary:hover { background:var(--orange); transform:translateY(-3px); }
-.btn-outline {
+.btn-primary:hover{
+  background:var(--orange);
+  transform:translateY(-4px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+.btn-outline{
   border:2px solid var(--purple);
   color:var(--purple);
 }
-.btn-outline:hover {
+.btn-outline:hover{
   background:var(--purple);
   color:#fff;
 }
-
-.hero-img img {
+.hero-img{
+  animation:float 6s ease-in-out infinite;
+}
+.hero-img img{
   width:100%;
   max-width:480px;
-  position:relative;
+  filter:drop-shadow(0 40px 60px rgba(0,0,0,0.25));
 }
 
 /* SECTIONS */
-section {
+section{
   max-width:1200px;
   margin:auto;
-  padding:5rem 2rem;
+  padding:6rem 2rem;
 }
-h2 {
+h2{
   text-align:center;
-  font-size:2.4rem;
+  font-size:2.6rem;
   color:var(--purple);
-  margin-bottom:3rem;
+  margin-bottom:3.5rem;
 }
 
 /* GRID */
-.grid {
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:2rem;
+  gap:2.5rem;
 }
 
-/* CARDS */
-.card {
-  padding:2rem;
-  border-radius:20px;
-  border:1px solid #eee;
+/* REWARDS */
+.rewards-card{
+  background:#fff;
+  padding:2.2rem;
+  border-radius:26px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
   text-align:center;
+  transition:all 0.4s ease;
+}
+.rewards-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 30px 60px rgba(0,0,0,0.18);
+}
+.rewards-card h3{
+  color:var(--purple);
+  margin-bottom:0.6rem;
+}
+.rewards-card p{
+  color:var(--gray);
+  font-size:0.95rem;
 }
 
 /* MENU CARDS */
-.menu-card {
+.menu-card{
   background:#fff;
-  border-radius:22px;
-  padding:1.5rem;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  transition:all 0.4s ease;
+  border-radius:26px;
+  padding:1.8rem;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  transition:all 0.45s ease;
+  text-align:center;
 }
-.menu-card:hover {
-  transform:translateY(-10px);
-  box-shadow:0 25px 45px rgba(0,0,0,0.18);
+.menu-card:hover{
+  transform:translateY(-14px);
+  box-shadow:0 35px 70px rgba(0,0,0,0.22);
 }
-.menu-card img {
+.menu-card img{
   width:100%;
-  height:220px;
+  height:230px;
   object-fit:cover;
-  border-radius:16px;
-  margin-bottom:1rem;
+  border-radius:20px;
+  margin-bottom:1.2rem;
 }
-.menu-card h3 { color:var(--purple); }
-.price { color:var(--orange); font-weight:600; margin-top:0.5rem; }
+.menu-card h3{
+  color:var(--purple);
+}
+.menu-card p{
+  color:var(--gray);
+  font-size:0.95rem;
+}
+.price{
+  margin:0.7rem 0 1.2rem;
+  color:var(--orange);
+  font-weight:700;
+}
 
 /* LOCATION */
-.location {
-  background:var(--purple);
+.location{
+  background:linear-gradient(135deg,var(--purple),#3f1e66);
   color:#fff;
   text-align:center;
 }
-.map-container {
+.map-container{
   max-width:900px;
-  margin:2rem auto 0;
-  border-radius:20px;
+  margin:2.5rem auto 0;
+  border-radius:24px;
   overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,0.35);
 }
 
 /* FOOTER */
-footer {
-  background:#111;
+footer{
+  background:#0d0d0d;
   color:#fff;
   text-align:center;
-  padding:2rem;
+  padding:2.5rem;
 }
 
-/* SCROLL ANIMATIONS */
-.animate {
-  opacity:0;
-  transform:translateY(40px);
-  transition:all 0.8s ease;
+/* ANIMATIONS */
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-18px);}
 }
-.animate.show {
+.reveal{
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 1s cubic-bezier(.16,1,.3,1);
+}
+.reveal.show{
   opacity:1;
-  transform:translateY(0);
+  transform:none;
 }
 
 /* MOBILE */
-@media(max-width:900px) {
-  .hero { grid-template-columns:1fr; text-align:center; }
-  nav ul {
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;}
+  nav ul{
     position:absolute;
     top:70px;
     left:0;
@@ -230,10 +274,9 @@ footer {
     background:#fff;
     flex-direction:column;
     display:none;
-    padding:1rem 0;
   }
-  nav ul.show { display:flex; }
-  .menu-toggle { display:block; }
+  nav ul.show{display:flex;}
+  .menu-toggle{display:block;}
 }
 </style>
 </head>
@@ -241,66 +284,81 @@ footer {
 <body>
 
 <header>
-  <nav>
-    <div class="logo">OakBerry Berkeley</div>
-    <div class="menu-toggle">☰</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#rewards">Rewards</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#location">Location</a></li>
-    </ul>
-  </nav>
+<nav>
+  <div class="logo">OakBerry Berkeley</div>
+  <div class="menu-toggle">☰</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#rewards">Rewards</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+</nav>
 </header>
 
 <section id="home" class="hero">
-  <div class="hero-text animate">
-    <h1>Feel Good Energy</h1>
-    <p>Organic açaí bowls made fresh every day. Simple ingredients. Real fuel.</p>
+  <div class="hero-text reveal">
+    <h1>Feel Good<br>Energy</h1>
+    <p>Organic açaí bowls made fresh every day — clean ingredients, powerful fuel.</p>
     <div class="hero-buttons">
       <a href="#menu" class="btn btn-primary">Order Now</a>
-      <a href="#rewards" class="btn btn-outline">Join Bear Rewards</a>
+      <a href="#rewards" class="btn btn-outline">Join Rewards</a>
     </div>
   </div>
-
-  <div class="hero-img animate">
+  <div class="hero-img reveal">
     <img src="images/oakberry-classic.webp" alt="OakBerry Bowl">
   </div>
 </section>
 
-<section id="menu">
-  <h2 class="animate">Our Bowls</h2>
+<section id="rewards">
+  <h2 class="reveal">Bear Rewards</h2>
   <div class="grid">
-    <div class="menu-card animate">
+    <div class="rewards-card reveal">
+      <h3>10% Student Discount</h3>
+      <p>UC Berkeley students receive 10% off with valid ID.</p>
+    </div>
+    <div class="rewards-card reveal">
+      <h3>Earn Points</h3>
+      <p>Get 1 point per dollar. Redeem for free bowls.</p>
+    </div>
+    <div class="rewards-card reveal">
+      <h3>No App Needed</h3>
+      <p>Fast sign-up. No downloads required.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <h2 class="reveal">Our Bowls</h2>
+  <div class="grid">
+    <div class="menu-card reveal">
       <img src="images/CRUNCHY.webp">
       <h3>Crunchy</h3>
       <p>Açaí, granola, banana, peanut butter</p>
       <div class="price">$10.49</div>
-      <a class="btn btn-primary" style="margin-top:1rem;">Order</a>
+      <a class="btn btn-primary">Order</a>
     </div>
-
-    <div class="menu-card animate">
+    <div class="menu-card reveal">
       <img src="images/ORIGINAL.webp">
       <h3>The Original</h3>
       <p>Pure açaí base with classic toppings</p>
       <div class="price">$9.99</div>
-      <a class="btn btn-primary" style="margin-top:1rem;">Order</a>
+      <a class="btn btn-primary">Order</a>
     </div>
-
-    <div class="menu-card animate">
+    <div class="menu-card reveal">
       <img src="images/MATCHA.webp">
       <h3>Matcha</h3>
       <p>Matcha base, banana, granola, honey</p>
       <div class="price">$10.99</div>
-      <a class="btn btn-primary" style="margin-top:1rem;">Order</a>
+      <a class="btn btn-primary">Order</a>
     </div>
   </div>
 </section>
 
 <section id="location" class="location">
-  <h2 class="animate">Visit Us</h2>
+  <h2 class="reveal">Visit Us</h2>
   <p>2244 Bancroft Way, Berkeley, CA 94704</p>
-  <div class="map-container animate">
+  <div class="map-container reveal">
     <iframe src="https://www.google.com/maps?q=2244+Bancroft+Way,+Berkeley,+CA+94704&output=embed"
       width="100%" height="350" style="border:0;" loading="lazy"></iframe>
   </div>
@@ -311,19 +369,17 @@ footer {
 </footer>
 
 <script>
-/* MOBILE MENU */
-document.querySelector('.menu-toggle').onclick = () => {
+document.querySelector('.menu-toggle').onclick=()=>{
   document.querySelector('nav ul').classList.toggle('show');
 };
 
-/* SCROLL ANIMATIONS */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('show');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('show');
   });
-},{ threshold:0.15 });
+},{threshold:0.15});
 
-document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 
 </body>
