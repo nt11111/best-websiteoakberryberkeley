@@ -14,6 +14,7 @@
   --berry:#9b4dcc;
   --orange:#ff6a00;
   --cream:#faf7ff;
+  --pink:#ffd6e4;
   --gray:#666;
   --dark:#111;
 }
@@ -28,17 +29,16 @@ body{
   overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* NAV */
 header{
   position:fixed;
   width:100%;
   z-index:1000;
-  background:rgba(255,255,255,0.7);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(0,0,0,0.06);
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(16px);
 }
 nav{
-  max-width:1200px;
+  max-width:1300px;
   margin:auto;
   padding:1.1rem 2rem;
   display:flex;
@@ -52,56 +52,41 @@ nav{
 }
 nav ul{
   display:flex;
-  list-style:none;
   gap:2.2rem;
+  list-style:none;
 }
 nav a{
   text-decoration:none;
   color:var(--dark);
   font-weight:500;
-  position:relative;
 }
-nav a::after{
-  content:"";
-  position:absolute;
-  bottom:-6px;
-  left:0;
-  width:0;
-  height:2px;
-  background:var(--purple);
-  transition:0.3s;
-}
-nav a:hover::after{width:100%;}
 .menu-toggle{
   display:none;
   font-size:1.7rem;
   cursor:pointer;
 }
 
-/* HERO */
+/* HERO (FULL BLEED) */
 .hero{
   min-height:100vh;
-  padding-top:120px;
-  padding-left:6%;
-  padding-right:6%;
   display:grid;
-  grid-template-columns:1.3fr 1fr;
+  grid-template-columns:1.2fr 1fr;
   align-items:center;
-  gap:3rem;
+  padding:7%;
   background:
-    radial-gradient(circle at top left, #ffd6e4, transparent 50%),
-    radial-gradient(circle at bottom right, #e6dcff, transparent 55%),
+    radial-gradient(circle at top left, var(--pink), transparent 45%),
+    radial-gradient(circle at bottom right, #e6dcff, transparent 50%),
     linear-gradient(135deg, var(--cream), #ffffff);
 }
 .hero-text h1{
-  font-size:4.2rem;
-  line-height:1.05;
+  font-size:4.6rem;
+  line-height:1.02;
   color:var(--purple);
 }
 .hero-text p{
-  max-width:520px;
+  max-width:540px;
   margin:1.8rem 0 2.8rem;
-  font-size:1.15rem;
+  font-size:1.2rem;
   color:var(--gray);
 }
 .hero-buttons{
@@ -110,7 +95,7 @@ nav a:hover::after{width:100%;}
   flex-wrap:wrap;
 }
 .btn{
-  padding:0.95rem 2.5rem;
+  padding:1rem 2.6rem;
   border-radius:50px;
   font-weight:600;
   text-decoration:none;
@@ -121,8 +106,8 @@ nav a:hover::after{width:100%;}
   color:#fff;
 }
 .btn-primary:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 40px rgba(0,0,0,0.25);
+  transform:translateY(-6px);
+  box-shadow:0 22px 50px rgba(0,0,0,0.3);
 }
 .btn-outline{
   border:2px solid var(--purple);
@@ -137,112 +122,140 @@ nav a:hover::after{width:100%;}
 }
 .hero-img img{
   width:100%;
-  max-width:480px;
-  filter:drop-shadow(0 45px 70px rgba(0,0,0,0.35));
+  max-width:520px;
+  filter:drop-shadow(0 50px 80px rgba(0,0,0,0.35));
 }
 
-/* SECTIONS */
+/* FEATURE STRIP */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:2rem;
+  padding:4rem 2rem;
+  max-width:1200px;
+  margin:auto;
+}
+.feature{
+  text-align:center;
+}
+.feature h3{
+  color:var(--purple);
+  margin-bottom:0.4rem;
+}
+
+/* SECTION BASE */
 section{
   max-width:1200px;
   margin:auto;
-  padding:7rem 2rem;
+  padding:6rem 2rem;
 }
 h2{
   text-align:center;
-  font-size:2.7rem;
+  font-size:2.8rem;
   color:var(--purple);
-  margin-bottom:3.8rem;
+  margin-bottom:3.5rem;
 }
 
-/* GRID */
-.grid{
+/* REWARDS BAND */
+.rewards-band{
+  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  color:#fff;
+}
+.rewards-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:2.6rem;
+  gap:2.5rem;
 }
-
-/* REWARDS */
 .rewards-card{
-  background:#fff;
-  padding:2.6rem 2.2rem;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(10px);
+  padding:2.6rem;
   border-radius:28px;
-  box-shadow:0 20px 45px rgba(0,0,0,0.08);
   text-align:center;
-  transition:all 0.45s ease;
-}
-.rewards-card:hover{
-  transform:translateY(-14px);
-  box-shadow:0 35px 70px rgba(0,0,0,0.18);
-}
-.rewards-card h3{
-  color:var(--purple);
-  margin-bottom:0.7rem;
 }
 
 /* MENU */
+.menu-wrap{
+  background:var(--cream);
+}
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:3rem;
+}
 .menu-card{
   background:#fff;
-  border-radius:28px;
+  border-radius:30px;
   padding:2rem;
-  box-shadow:0 20px 45px rgba(0,0,0,0.08);
+  box-shadow:0 25px 60px rgba(0,0,0,0.12);
+  transition:all 0.5s ease;
   text-align:center;
-  transition:all 0.45s ease;
 }
 .menu-card:hover{
-  transform:translateY(-16px);
-  box-shadow:0 40px 80px rgba(0,0,0,0.22);
+  transform:translateY(-18px);
+  box-shadow:0 45px 90px rgba(0,0,0,0.25);
 }
 .menu-card img{
   width:100%;
   height:240px;
   object-fit:cover;
-  border-radius:22px;
+  border-radius:24px;
   margin-bottom:1.4rem;
 }
 .menu-card h3{
   color:var(--purple);
 }
-.menu-card p{
-  color:var(--gray);
-  font-size:0.95rem;
-}
 .price{
-  margin:0.9rem 0 1.4rem;
+  margin:1rem 0 1.5rem;
   font-weight:700;
   color:var(--orange);
 }
 
+/* CTA */
+.cta{
+  text-align:center;
+  padding:7rem 2rem;
+  background:linear-gradient(135deg,var(--berry),var(--purple));
+  color:#fff;
+}
+.cta h2{
+  color:#fff;
+}
+.cta a{
+  margin-top:2rem;
+  display:inline-block;
+}
+
 /* LOCATION */
 .location{
-  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  background:#111;
   color:#fff;
   text-align:center;
 }
 .map-container{
   max-width:900px;
-  margin:2.8rem auto 0;
-  border-radius:26px;
+  margin:3rem auto 0;
+  border-radius:28px;
   overflow:hidden;
-  box-shadow:0 30px 70px rgba(0,0,0,0.4);
 }
 
 /* FOOTER */
 footer{
-  background:#0c0c0c;
+  background:#000;
   color:#fff;
   text-align:center;
-  padding:3rem;
+  padding:2.5rem;
 }
 
 /* ANIMATIONS */
 @keyframes float{
   0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-22px);}
+  50%{transform:translateY(-24px);}
 }
 .reveal{
   opacity:0;
-  transform:translateY(60px);
-  transition:all 1s cubic-bezier(.16,1,.3,1);
+  transform:translateY(60px) scale(0.97);
+  transition:all 1.2s cubic-bezier(.16,1,.3,1);
 }
 .reveal.show{
   opacity:1;
@@ -285,38 +298,44 @@ footer{
 <section id="home" class="hero">
   <div class="hero-text reveal">
     <h1>Feel Good<br>Energy</h1>
-    <p>Organic açaí bowls crafted fresh every day — clean fuel that powers your lifestyle.</p>
+    <p>Organic açaí bowls made fresh daily — clean ingredients, real power.</p>
     <div class="hero-buttons">
       <a href="#menu" class="btn btn-primary">Order Now</a>
       <a href="#rewards" class="btn btn-outline">Join Rewards</a>
     </div>
   </div>
   <div class="hero-img reveal">
-    <img src="images/oakberry-classic.webp" alt="OakBerry Bowl">
+    <img src="images/oakberry-classic.webp">
   </div>
 </section>
 
-<section id="rewards">
+<div class="features">
+  <div class="feature reveal">
+    <h3>Organic Açaí</h3>
+    <p>Responsibly sourced</p>
+  </div>
+  <div class="feature reveal">
+    <h3>No Added Sugar</h3>
+    <p>Just natural energy</p>
+  </div>
+  <div class="feature reveal">
+    <h3>Made Fresh</h3>
+    <p>Every single day</p>
+  </div>
+</div>
+
+<section id="rewards" class="rewards-band">
   <h2 class="reveal">Bear Rewards</h2>
-  <div class="grid">
-    <div class="rewards-card reveal">
-      <h3>10% Student Discount</h3>
-      <p>Exclusive savings for UC Berkeley students.</p>
-    </div>
-    <div class="rewards-card reveal">
-      <h3>Earn Points</h3>
-      <p>1 point per dollar. Free bowls faster.</p>
-    </div>
-    <div class="rewards-card reveal">
-      <h3>No App Needed</h3>
-      <p>Quick sign-up, no downloads required.</p>
-    </div>
+  <div class="rewards-grid">
+    <div class="rewards-card reveal">10% UC Berkeley student discount</div>
+    <div class="rewards-card reveal">Earn points toward free bowls</div>
+    <div class="rewards-card reveal">No app required</div>
   </div>
 </section>
 
-<section id="menu">
+<section id="menu" class="menu-wrap">
   <h2 class="reveal">Our Bowls</h2>
-  <div class="grid">
+  <div class="menu-grid">
     <div class="menu-card reveal">
       <img src="images/CRUNCHY.webp">
       <h3>Crunchy</h3>
@@ -341,9 +360,14 @@ footer{
   </div>
 </section>
 
+<section class="cta">
+  <h2 class="reveal">Fuel Your Day the OakBerry Way</h2>
+  <a href="#menu" class="btn btn-outline">Order Now</a>
+</section>
+
 <section id="location" class="location">
   <h2 class="reveal">Visit Us</h2>
-  <p>2244 Bancroft Way, Berkeley, CA 94704</p>
+  <p>2244 Bancroft Way, Berkeley, CA</p>
   <div class="map-container reveal">
     <iframe src="https://www.google.com/maps?q=2244+Bancroft+Way,+Berkeley,+CA+94704&output=embed"
       width="100%" height="350" style="border:0;" loading="lazy"></iframe>
