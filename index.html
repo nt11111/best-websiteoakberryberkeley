@@ -11,27 +11,23 @@
 
     <style>
         :root {
-            /* Official Brand Colors */
+            /* Oakberry Brand Colors */
             --oak-purple: #45195e; 
-            --oak-purple-light: #5d2877;
-            --oak-dark: #290e38;
-            --oak-orange: #fcb900; 
-            --oak-orange-dark: #ed9726;
+            --oak-purple-dark: #2e0f40;
+            --oak-yellow: #fcb900; 
             --white: #ffffff;
-            --off-white: #f4f4f4;
+            --off-white: #f9f9f9;
+            --gray-text: #4a4a4a;
             
             --font-head: 'Roboto Slab', serif; 
             --font-body: 'Montserrat', sans-serif;
             
-            --container: 1320px;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --container: 1280px;
+            --transition: all 0.3s ease-in-out;
+            --radius: 12px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-body);
@@ -41,31 +37,26 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* BRANDS AND HEADINGS ALWAYS CAPS */
-        h1, h2, h3, h4, .logo, .btn, .nav-link, .brand-name {
+        /* TYPOGRAPHY UTILS */
+        h1, h2, h3, h4, .btn, .nav-link, .logo {
             font-family: var(--font-head);
             text-transform: uppercase;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
+        img { display: block; max-width: 100%; }
 
-        /* ================= NAVIGATION ================= */
+        /* ================= HEADER ================= */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 0;
-            transition: 0.3s;
-            background: linear-gradient(180deg, rgba(69, 25, 94, 0.9) 0%, rgba(69, 25, 94, 0) 100%);
-        }
-
-        header.scrolled {
-            background: rgba(69, 25, 94, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 999;
+            padding: 1.2rem 0;
+            background: linear-gradient(180deg, rgba(69, 25, 94, 0.95) 0%, rgba(69, 25, 94, 0.8) 100%);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .nav-container {
@@ -80,71 +71,55 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
-            letter-spacing: -0.5px;
-            line-height: 1;
+            letter-spacing: -1px;
             color: var(--white);
+            display: flex;
+            align-items: center;
         }
-        
-        .logo span { color: var(--oak-orange); }
+
+        .logo span { color: var(--oak-yellow); }
 
         .nav-menu {
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .nav-link {
-            font-family: var(--font-body); /* Menu links are usually sans-serif */
+            font-family: var(--font-body);
             font-weight: 700;
             font-size: 0.85rem;
-            letter-spacing: 1px;
-            opacity: 0.9;
-            transition: var(--transition);
-            position: relative;
+            letter-spacing: 0.5px;
+            color: rgba(255,255,255,0.9);
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--oak-orange);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover { opacity: 1; color: var(--oak-orange); }
-        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: var(--oak-yellow); }
 
         .btn-order {
-            background: var(--oak-orange);
+            background-color: var(--oak-yellow);
             color: var(--oak-purple);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-family: var(--font-body);
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 0.5px;
-            transition: var(--transition);
-            box-shadow: 0 10px 20px rgba(237, 151, 38, 0.3);
         }
 
         .btn-order:hover {
-            transform: translateY(-3px);
-            background: #fff;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background-color: #fff;
         }
 
-        /* ================= HERO SECTION ================= */
+        /* ================= HERO ================= */
         .hero {
-            height: 100vh;
-            min-height: 700px;
+            position: relative;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
+            background: radial-gradient(circle at 60% 40%, #5d2877 0%, var(--oak-purple) 70%, #1a0524 100%);
+            padding-top: 80px; /* offset header */
             overflow: hidden;
-            background: radial-gradient(circle at 70% 40%, #682b8a 0%, var(--oak-purple) 60%, var(--oak-dark) 100%);
         }
 
         .hero-container {
@@ -153,323 +128,272 @@
             padding: 0 2rem;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
+            gap: 2rem;
             z-index: 2;
         }
 
         .hero-text h1 {
-            font-size: clamp(3.5rem, 6.5vw, 6rem);
+            font-size: clamp(3rem, 5vw, 5.5rem);
             line-height: 0.95;
             margin-bottom: 1.5rem;
-            letter-spacing: -2px;
         }
 
-        .hero-text h1 span {
-            color: var(--oak-orange);
-            display: block;
-        }
+        .hero-text h1 span { color: var(--oak-yellow); }
 
         .hero-text p {
-            font-size: 1.2rem;
-            max-width: 500px;
-            margin-bottom: 3rem;
-            font-weight: 400;
-            line-height: 1.6;
+            font-size: 1.1rem;
             opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+            line-height: 1.6;
         }
 
-        .hero-btn {
+        .hero-cta {
             display: inline-block;
+            padding: 1rem 2.5rem;
             background: var(--white);
             color: var(--oak-purple);
-            padding: 1.2rem 3rem;
             font-weight: 900;
-            font-size: 1rem;
-            border-radius: 4px; 
-            transition: var(--transition);
-            letter-spacing: 1px;
+            border-radius: 4px; /* Classic sharp button */
             text-transform: uppercase;
+            letter-spacing: 1px;
             font-family: var(--font-head);
         }
 
-        .hero-btn:hover {
-            background: var(--oak-orange);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        .hero-cta:hover {
+            background: var(--oak-yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        /* Levitating Cup Animation */
-        .hero-image-wrapper {
+        .hero-img-wrap {
             position: relative;
-            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
+        /* Levitating Animation */
         .hero-cup {
-            width: 100%;
-            max-width: 480px;
-            filter: drop-shadow(0 40px 60px rgba(0,0,0,0.5));
+            width: 80%;
+            max-width: 450px;
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,0.4));
             animation: float 6s ease-in-out infinite;
-            transform: rotate(-5deg);
+            transform: rotate(-3deg);
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-25px) rotate(-2deg); }
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-20px) rotate(0deg); }
         }
 
-        /* ================= PRODUCTS ================= */
+        /* ================= PRODUCTS / MENU ================= */
         .products {
-            padding: 8rem 0;
             background: var(--white);
-            color: var(--oak-dark);
+            color: var(--oak-purple);
+            padding: 6rem 2rem;
             position: relative;
         }
-        
-        .products::before {
-            content: '';
+
+        /* Torn Paper Edge Effect */
+        .products-top-edge {
             position: absolute;
-            top: -50px;
+            top: -40px;
             left: 0;
             width: 100%;
-            height: 50px;
-            background: var(--white);
-            clip-path: polygon(0 100%, 100% 100%, 100% 0, 85% 60%, 70% 0, 55% 60%, 40% 0, 25% 60%, 10% 0, 0 60%);
+            height: 41px;
+            background-color: var(--white);
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'/%3E%3C/svg%3E");
+            mask-size: cover;
+            -webkit-mask-size: cover;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
         }
 
         .section-header h2 {
-            font-size: 3.5rem;
-            color: var(--oak-purple);
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
         }
-        
+
         .section-header p {
-            font-weight: 700;
-            color: #888;
-            letter-spacing: 2px;
-            text-transform: uppercase;
             font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            font-weight: 700;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             max-width: var(--container);
             margin: 0 auto;
-            padding: 0 2rem;
         }
 
-        .bowl-card {
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
             cursor: pointer;
+            group: 1;
         }
 
-        .img-holder {
-            height: 400px;
-            width: 100%;
-            background: #f4f4f4;
+        .card-img-container {
+            background-color: var(--off-white);
             border-radius: 20px;
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .img-holder img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .bowl-card:hover .img-holder {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .bowl-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .bowl-card h3 {
-            font-size: 2rem;
-            color: var(--oak-purple);
-            margin-bottom: 0.5rem;
-        }
-
-        .bowl-card p {
-            color: #666;
+            height: 380px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 1.5rem;
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card img {
+            height: 90%;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));
+        }
+
+        .card:hover .card-img-container {
+            background-color: #f0f0f0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+        }
+
+        .card:hover img {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--oak-purple);
+        }
+
+        .card p {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            max-width: 280px;
+            margin-bottom: 1rem;
             font-weight: 500;
         }
 
-        .price-tag {
-            display: inline-block;
-            background: var(--oak-orange);
+        .price {
+            background: var(--oak-yellow);
             color: var(--oak-purple);
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             border-radius: 4px;
-            font-family: var(--font-body);
             font-weight: 800;
-            font-size: 1.1rem;
+            font-family: var(--font-body);
         }
 
-        /* ================= LAYERS ================= */
-        .layers-section {
-            padding: 8rem 2rem;
-            background: var(--oak-dark);
-            text-align: center;
+        /* ================= MAP SECTION ================= */
+        .map-section {
+            background: var(--oak-purple-dark);
+            padding: 0;
             position: relative;
         }
 
-        .layers-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .layers-content h2 {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-        }
-
-        .layers-content h2 span {
-            color: var(--oak-orange);
-        }
-
-        .ingredient-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 4rem;
-        }
-
-        .ingredient {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            width: 180px;
+        .map-wrapper {
+            width: 100%;
+            height: 450px;
+            filter: grayscale(20%) contrast(1.1);
             transition: var(--transition);
         }
-
-        .ingredient:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
-            border-color: var(--oak-orange);
+        
+        .map-wrapper:hover {
+            filter: grayscale(0%);
         }
 
-        .ingredient h4 {
-            font-size: 3rem; 
+        .map-overlay {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            background: var(--white);
+            color: var(--oak-purple);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            max-width: 400px;
+            z-index: 10;
+        }
+
+        .map-overlay h3 {
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .ingredient span {
-            display: block;
-            font-weight: 700;
-            font-family: var(--font-head);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        .map-overlay p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
         }
+
+        .map-btn {
+            background: var(--oak-purple);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            font-weight: 700;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .map-btn:hover { background: var(--oak-yellow); color: var(--oak-purple); }
 
         /* ================= FOOTER ================= */
         footer {
-            background: #1a0524;
-            padding: 6rem 2rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            background-color: #000;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
         }
 
-        .footer-content {
-            max-width: var(--container);
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 4rem;
-        }
-
-        .footer-brand h2 {
+        .footer-logo {
+            font-family: var(--font-head);
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: var(--white);
         }
 
-        .footer-brand p {
-            opacity: 0.6;
-            max-width: 300px;
-        }
+        .footer-logo span { color: var(--oak-yellow); }
 
-        .footer-links h4 {
-            color: var(--oak-orange);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-links ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            font-family: var(--font-body);
-            font-weight: 500;
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--oak-orange);
-            opacity: 1;
-        }
-
-        .copyright {
-            margin-top: 5rem;
-            text-align: center;
-            opacity: 0.4;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
-        }
-
-        @media (max-width: 968px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding-top: 100px;
-            }
-
-            .hero-text h1 {
-                font-size: 4rem;
-            }
-
-            .hero-text p {
-                margin: 0 auto 2rem;
-            }
-
-            .nav-menu { display: none; }
+        .footer p { opacity: 0.5; font-size: 0.9rem; margin-top: 2rem; }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-img-wrap { margin-top: 3rem; }
+            .map-overlay { position: relative; left: 0; top: 0; transform: none; max-width: 100%; margin: 0; border-radius: 0; }
+            .nav-menu { display: none; } 
         }
     </style>
 </head>
 <body>
 
-    <header id="navbar">
+    <header>
         <div class="nav-container">
             <a href="#" class="logo">OAK<span>BERRY</span></a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#" class="nav-link">Our Açaí</a></li>
-                    <li><a href="#" class="nav-link">Menu</a></li>
-                    <li><a href="#" class="nav-link">Locations</a></li>
-                    <li><a href="#" class="nav-link">Franchise</a></li>
-                    <li><a href="#" class="btn-order">Order Now</a></li>
+                    <li><a href="#" class="nav-link">MENU</a></li>
+                    <li><a href="#" class="nav-link">LOCATIONS</a></li>
+                    <li><a href="#" class="nav-link">OUR STORY</a></li>
+                    <li><a href="#" class="btn-order">ORDER NOW</a></li>
                 </ul>
             </nav>
         </div>
@@ -479,128 +403,75 @@
         <div class="hero-container">
             <div class="hero-text">
                 <h1>RESPECT<br>THE <span>OAK.</span></h1>
-                <p>100% organic. Vegan. Gluten-free. The authentic Brazilian açaí experience, layered to perfection at UC Berkeley.</p>
-                <a href="#" class="hero-btn">View The Menu</a>
+                <p>Authentic Brazilian Açaí. 100% natural, organic, and vegan. Layered with unlimited toppings for the ultimate energy boost.</p>
+                <a href="#menu" class="hero-cta">Explore Menu</a>
             </div>
-            <div class="hero-image-wrapper">
-                
-                <img src="https://images.unsplash.com/photo-1626078299034-7bb6d5822b3d?q=80&w=1400&auto=format&fit=crop" alt="Oakberry Acai Cup" class="hero-cup">
+            <div class="hero-img-wrap">
+                <img src="images/oakberry-classic.webp" alt="Oakberry Acai Cup" class="hero-cup">
             </div>
         </div>
     </section>
 
-    <section class="products">
+    <section id="menu" class="products">
+        <div class="products-top-edge"></div>
+        
         <div class="section-header">
             <p>Millions of Combinations</p>
-            <h2>SIGNATURE OAKBERRY WORKS</h2>
+            <h2>SIGNATURE BOWLS</h2>
         </div>
 
         <div class="grid">
-            <div class="bowl-card">
-                <div class="img-holder">
-                    <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1000&auto=format&fit=crop" alt="The Classic">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/ORIGINAL.webp" alt="The Original">
                 </div>
                 <h3>THE ORIGINAL</h3>
-                <p>Peanut butter, banana, granola, honey.</p>
-                <div class="price-tag">$12.50</div>
+                <p>Classic açaí layered with organic granola, peanut butter, and fresh banana slices.</p>
+                <span class="price">$12.95</span>
             </div>
 
-            <div class="bowl-card">
-                <div class="img-holder">
-                    <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=1000&auto=format&fit=crop" alt="The Works">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/CRUNCHY.webp" alt="The Crunch">
                 </div>
                 <h3>THE CRUNCH</h3>
-                <p>Chia pudding, cacao nibs, coconut.</p>
-                <div class="price-tag">$13.50</div>
+                <p>A texture masterpiece featuring chia pudding, cacao nibs, coconut flakes, and strawberries.</p>
+                <span class="price">$13.50</span>
             </div>
 
-            <div class="bowl-card">
-                <div class="img-holder">
-                    <img src="https://images.unsplash.com/photo-1596450502967-85474378aa5a?q=80&w=1000&auto=format&fit=crop" alt="Tropical">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/MATCHA.webp" alt="Matcha Dream">
                 </div>
-                <h3>TROPICAL OAK</h3>
-                <p>Passion fruit, mango, strawberry.</p>
-                <div class="price-tag">$11.90</div>
+                <h3>MATCHA DREAM</h3>
+                <p>Organic matcha base layered with banana, goji berries, and honey drizzle.</p>
+                <span class="price">$11.49</span>
             </div>
         </div>
     </section>
 
-    <section class="layers-section">
-        <div class="layers-content">
-            <h2>YOUR BOWL,<br><span>YOUR LAYERS.</span></h2>
-            <p style="font-size: 1.2rem; opacity: 0.8;">We don't just blend. We build. Unlimited toppings layered between our organic OAKBERRY açaí base.</p>
-            
-            <div class="ingredient-grid">
-                <div class="ingredient">
-                    <h4>🥜</h4>
-                    <span>PEANUT BUTTER</span>
-                </div>
-                <div class="ingredient">
-                    <h4>🍌</h4>
-                    <span>BANANA</span>
-                </div>
-                <div class="ingredient">
-                    <h4>🥥</h4>
-                    <span>COCONUT</span>
-                </div>
-                <div class="ingredient">
-                    <h4>🥛</h4>
-                    <span>CHIA PUDDING</span>
-                </div>
-            </div>
+    <section class="map-section">
+        <div class="map-overlay">
+            <h3>BERKELEY</h3>
+            <p>2244 Bancroft Way<br>Berkeley, CA 94704<br>Daily: 8AM - 10PM</p>
+            <a href="https://maps.google.com" target="_blank" class="map-btn">GET DIRECTIONS</a>
+        </div>
+        <div class="map-wrapper">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.638522304917!2d-122.2644216846788!3d37.86877797974241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80857c2a71555555%3A0x123456789abcdef!2s2244%20Bancroft%20Way%2C%20Berkeley%2C%20CA%2094704!5e0!3m2!1sen!2sus!4v1625000000000!5m2!1sen!2sus" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h2>OAK<span>BERRY</span></h2>
-                <p>BERKELEY<br>2244 Bancroft Way<br>Berkeley, CA 94704</p>
-            </div>
-            
-            <div class="footer-links">
-                <h4>MENU</h4>
-                <ul>
-                    <li><a href="#">WORKS</a></li>
-                    <li><a href="#">SMOOTHIES</a></li>
-                    <li><a href="#">TOPPINGS</a></li>
-                    <li><a href="#">NUTRITION</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h4>COMPANY</h4>
-                <ul>
-                    <li><a href="#">OUR STORY</a></li>
-                    <li><a href="#">CAREERS</a></li>
-                    <li><a href="#">FRANCHISE</a></li>
-                    <li><a href="#">PRESS</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h4>FOLLOW US</h4>
-                <ul>
-                    <li><a href="#">INSTAGRAM</a></li>
-                    <li><a href="#">TIKTOK</a></li>
-                    <li><a href="#">FACEBOOK</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2025 OAKBERRY BERKELEY. ALL RIGHTS RESERVED. GO BEARS 🐻
-        </div>
+        <div class="footer-logo">OAK<span>BERRY</span></div>
+        <p>© 2026 OAKBERRY BERKELEY. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
