@@ -3,63 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OakBerry Berkeley | The Ultimate Açaí Experience</title>
-
+    <title>OAKBERRY | Berkeley</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto+Slab:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Slab:wght@700;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Oakberry Brand Colors */
-            --oak-purple: #4e2561;
-            --oak-dark: #501b63;
-            --oak-orange: #ed9726;
-            
-            /* Accents & UI */
+            /* Official Brand Colors */
+            --oak-purple: #45195e; 
+            --oak-purple-light: #5d2877;
+            --oak-dark: #290e38;
+            --oak-orange: #fcb900; 
+            --oak-orange-dark: #ed9726;
             --white: #ffffff;
-            --off-white: #f3f4f6;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --shadow-lg: 0 20px 50px rgba(0,0,0,0.3);
-            --radius: 24px;
+            --off-white: #f4f4f4;
+            
+            --font-head: 'Roboto Slab', serif; 
+            --font-body: 'Montserrat', sans-serif;
+            
+            --container: 1320px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at top right, var(--oak-purple), var(--oak-dark));
+            font-family: var(--font-body);
+            background-color: var(--oak-purple);
             color: var(--white);
-            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Typography Override */
-        h1, h2, h3, .logo, .price {
-            /* Tries Nexa Slab first, falls back to Roboto Slab */
-            font-family: 'Nexa Slab', 'Roboto Slab', serif; 
+        /* BRANDS AND HEADINGS ALWAYS CAPS */
+        h1, h2, h3, h4, .logo, .btn, .nav-link, .brand-name {
+            font-family: var(--font-head);
+            text-transform: uppercase;
         }
 
-        /* ================= HEADER ================= */
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ================= NAVIGATION ================= */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 0;
             z-index: 1000;
-            background: rgba(80, 27, 99, 0.85); /* Transparent Oak Dark */
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem 0;
+            transition: 0.3s;
+            background: linear-gradient(180deg, rgba(69, 25, 94, 0.9) 0%, rgba(69, 25, 94, 0) 100%);
         }
 
-        nav {
-            max-width: 1280px;
+        header.scrolled {
+            background: rgba(69, 25, 94, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: var(--container);
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
@@ -70,433 +80,527 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
+            letter-spacing: -0.5px;
+            line-height: 1;
             color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: -1px;
         }
+        
+        .logo span { color: var(--oak-orange); }
 
-        .logo span {
-            color: var(--oak-orange);
-        }
-
-        .nav-links {
+        .nav-menu {
             display: flex;
-            gap: 2.5rem;
-            list-style: none;
+            gap: 3rem;
             align-items: center;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: rgba(255,255,255,0.8);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--oak-orange);
-        }
-
-        .cta-btn {
-            background: var(--oak-orange);
-            color: var(--white);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
+        .nav-link {
+            font-family: var(--font-body); /* Menu links are usually sans-serif */
             font-weight: 700;
-            text-decoration: none;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--oak-orange);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { opacity: 1; color: var(--oak-orange); }
+        .nav-link:hover::after { width: 100%; }
+
+        .btn-order {
+            background: var(--oak-orange);
+            color: var(--oak-purple);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
             box-shadow: 0 10px 20px rgba(237, 151, 38, 0.3);
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(237, 151, 38, 0.5);
+        .btn-order:hover {
+            transform: translateY(-3px);
+            background: #fff;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        /* ================= HERO ================= */
+        /* ================= HERO SECTION ================= */
         .hero {
-            min-height: 100vh;
-            padding: 140px 2rem 4rem;
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
             align-items: center;
-            gap: 4rem;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 70% 40%, #682b8a 0%, var(--oak-purple) 60%, var(--oak-dark) 100%);
+        }
+
+        .hero-container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            z-index: 2;
         }
 
         .hero-text h1 {
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
-            line-height: 1.1;
+            font-size: clamp(3.5rem, 6.5vw, 6rem);
+            line-height: 0.95;
             margin-bottom: 1.5rem;
+            letter-spacing: -2px;
         }
 
         .hero-text h1 span {
             color: var(--oak-orange);
+            display: block;
         }
 
         .hero-text p {
             font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2.5rem;
             max-width: 500px;
-            font-weight: 300;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0.9;
         }
 
-        .hero-img-container {
+        .hero-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--oak-purple);
+            padding: 1.2rem 3rem;
+            font-weight: 900;
+            font-size: 1rem;
+            border-radius: 4px; 
+            transition: var(--transition);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: var(--font-head);
+        }
+
+        .hero-btn:hover {
+            background: var(--oak-orange);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Levitating Cup Animation */
+        .hero-image-wrapper {
             position: relative;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* The Oakberry Cup */
-        .hero-img {
+        .hero-cup {
             width: 100%;
-            height: auto;
-            max-height: 600px;
-            object-fit: cover;
-            border-radius: var(--radius);
-            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            max-width: 480px;
+            filter: drop-shadow(0 40px 60px rgba(0,0,0,0.5));
             animation: float 6s ease-in-out infinite;
-            filter: drop-shadow(0 30px 40px rgba(0,0,0,0.5));
+            transform: rotate(-5deg);
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-25px) rotate(-2deg); }
         }
 
-        /* Decorative Elements behind cup */
-        .blob {
+        /* ================= PRODUCTS ================= */
+        .products {
+            padding: 8rem 0;
+            background: var(--white);
+            color: var(--oak-dark);
+            position: relative;
+        }
+        
+        .products::before {
+            content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: var(--oak-orange);
-            filter: blur(120px);
-            opacity: 0.2;
-            z-index: -1;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: var(--white);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0, 85% 60%, 70% 0, 55% 60%, 40% 0, 25% 60%, 10% 0, 0 60%);
         }
 
-        /* ================= STATS / FEATURES ================= */
-        .stats-bar {
-            background: var(--glass-bg);
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem 0;
-            margin-bottom: 4rem;
-        }
-
-        .stats-container {
-            max-width: 1280px;
-            margin: auto;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
+        .section-header {
             text-align: center;
+            margin-bottom: 5rem;
         }
 
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--oak-orange);
-            margin-bottom: 0.2rem;
+        .section-header h2 {
+            font-size: 3.5rem;
+            color: var(--oak-purple);
+            margin-bottom: 1rem;
         }
-
-        .stat-item p {
-            font-size: 0.9rem;
-            text-transform: uppercase;
+        
+        .section-header p {
+            font-weight: 700;
+            color: #888;
             letter-spacing: 2px;
-            opacity: 0.7;
+            text-transform: uppercase;
+            font-family: var(--font-body);
         }
 
-        /* ================= MENU SECTION ================= */
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        .grid-layout {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            max-width: 1280px;
-            margin: 0 auto 6rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: var(--container);
+            margin: 0 auto;
             padding: 0 2rem;
         }
 
-        .card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            transition: 0.4s;
+        .bowl-card {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .img-holder {
+            height: 400px;
+            width: 100%;
+            background: #f4f4f4;
+            border-radius: 20px;
+            margin-bottom: 2rem;
             position: relative;
             overflow: hidden;
+            transition: var(--transition);
         }
 
-        .card:hover {
-            background: rgba(255,255,255,0.12);
-            transform: translateY(-10px);
-            border-color: var(--oak-orange);
-        }
-
-        .card-img {
+        .img-holder img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
+            transition: transform 0.6s ease;
         }
 
-        .card-info h3 {
-            font-size: 1.5rem;
+        .bowl-card:hover .img-holder {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .bowl-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .bowl-card h3 {
+            font-size: 2rem;
+            color: var(--oak-purple);
             margin-bottom: 0.5rem;
         }
 
-        .card-info p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
+        .bowl-card p {
+            color: #666;
             margin-bottom: 1.5rem;
+            font-weight: 500;
         }
 
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-        }
-
-        .price {
-            font-size: 1.4rem;
-            color: var(--oak-orange);
-            font-weight: 700;
-        }
-
-        .add-btn {
-            background: var(--white);
-            color: var(--oak-purple);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .add-btn:hover {
-            background: var(--oak-orange);
-            color: var(--white);
-        }
-
-        /* ================= REWARDS (Alternate Layout) ================= */
-        .rewards-section {
-            background: linear-gradient(135deg, var(--oak-orange), #c27815);
-            padding: 6rem 2rem;
-            color: var(--white);
-            margin-bottom: 6rem;
-        }
-
-        .rewards-container {
-            max-width: 1280px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
-        }
-
-        .rewards-text h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-        
-        .rewards-card {
-            background: rgba(255,255,255,0.15);
-            padding: 2rem;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 400px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .reward-pill {
+        .price-tag {
             display: inline-block;
-            background: var(--oak-purple);
+            background: var(--oak-orange);
+            color: var(--oak-purple);
             padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        /* ================= LAYERS ================= */
+        .layers-section {
+            padding: 8rem 2rem;
+            background: var(--oak-dark);
+            text-align: center;
+            position: relative;
+        }
+
+        .layers-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .layers-content h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .layers-content h2 span {
+            color: var(--oak-orange);
+        }
+
+        .ingredient-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+        }
+
+        .ingredient {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 180px;
+            transition: var(--transition);
+        }
+
+        .ingredient:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+            border-color: var(--oak-orange);
+        }
+
+        .ingredient h4 {
+            font-size: 3rem; 
             margin-bottom: 1rem;
+        }
+
+        .ingredient span {
+            display: block;
+            font-weight: 700;
+            font-family: var(--font-head);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* ================= FOOTER ================= */
         footer {
-            background: #000;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-top: 1px solid var(--glass-border);
+            background: #1a0524;
+            padding: 6rem 2rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .footer-logo {
-            font-family: 'Nexa Slab', 'Roboto Slab', serif;
-            font-size: 2rem;
+        .footer-content {
+            max-width: var(--container);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+
+        .footer-brand h2 {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.6;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
             color: var(--oak-orange);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            font-family: var(--font-body);
+            font-weight: 500;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--oak-orange);
+            opacity: 1;
         }
 
         .copyright {
-            color: rgba(255,255,255,0.4);
+            margin-top: 5rem;
+            text-align: center;
+            opacity: 0.4;
             font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
         }
 
-        /* ================= MOBILE ================= */
-        @media (max-width: 900px) {
-            .hero {
+        @media (max-width: 968px) {
+            .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
-                padding-top: 120px;
+                padding-top: 100px;
             }
-            
+
             .hero-text h1 {
-                font-size: 3rem;
+                font-size: 4rem;
             }
-            
+
             .hero-text p {
-                margin: 0 auto 2rem auto;
+                margin: 0 auto 2rem;
             }
 
-            .nav-links {
-                display: none; /* Simple hide for mobile for this demo */
-            }
-
-            .rewards-container {
-                flex-direction: column;
-                text-align: center;
-            }
+            .nav-menu { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">Oak<span>Berry</span></div>
-            <ul class="nav-links">
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Locations</a></li>
-                <li><a href="#" class="cta-btn">Order Ahead</a></li>
-            </ul>
-        </nav>
+    <header id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">OAK<span>BERRY</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">Our Açaí</a></li>
+                    <li><a href="#" class="nav-link">Menu</a></li>
+                    <li><a href="#" class="nav-link">Locations</a></li>
+                    <li><a href="#" class="nav-link">Franchise</a></li>
+                    <li><a href="#" class="btn-order">Order Now</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
-        <div class="hero-text">
-            <h1>Respect the<br><span>Process.</span></h1>
-            <p>100% natural, organic açaí from Brazil to Berkeley. No dyes. No artificial preservatives. Just pure energy for the Golden Bears.</p>
-            <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content: inherit;">
-                <a href="#" class="cta-btn">View Menu</a>
-                <a href="#" style="padding: 0.8rem 1.8rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; text-decoration: none; color: white; font-weight: 600;">Location Info</a>
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>RESPECT<br>THE <span>OAK.</span></h1>
+                <p>100% organic. Vegan. Gluten-free. The authentic Brazilian açaí experience, layered to perfection at UC Berkeley.</p>
+                <a href="#" class="hero-btn">View The Menu</a>
             </div>
-        </div>
-        <div class="hero-img-container">
-            <div class="blob"></div>
-            <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1000&auto=format&fit=crop" alt="Oakberry Acai Bowl" class="hero-img">
-        </div>
-    </section>
-
-    <div class="stats-bar">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h3>100%</h3>
-                <p>Organic</p>
-            </div>
-            <div class="stat-item">
-                <h3>Vegan</h3>
-                <p>Certified</p>
-            </div>
-            <div class="stat-item">
-                <h3>GF</h3>
-                <p>Gluten Free</p>
-            </div>
-        </div>
-    </div>
-
-    <section class="menu">
-        <h2 class="section-title">Signature Bowls</h2>
-        
-        <div class="grid-layout">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=800&auto=format&fit=crop" alt="The Classic" class="card-img">
-                <div class="card-info">
-                    <h3>The Works</h3>
-                    <p>Unlimited toppings. Banana, granola, coconut flakes, honey, and peanut butter.</p>
-                    <div class="price-row">
-                        <span class="price">$12.50</span>
-                        <a href="#" class="add-btn">+</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1626078299034-7bb6d5822b3d?q=80&w=800&auto=format&fit=crop" alt="The Classic" class="card-img">
-                <div class="card-info">
-                    <h3>Tropical Breeze</h3>
-                    <p>Açaí blend topped with mango, pineapple, kiwi and chia pudding layers.</p>
-                    <div class="price-row">
-                        <span class="price">$11.00</span>
-                        <a href="#" class="add-btn">+</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1596450502967-85474378aa5a?q=80&w=800&auto=format&fit=crop" alt="The Classic" class="card-img">
-                <div class="card-info">
-                    <h3>Protein Power</h3>
-                    <p>Whey protein infusion, peanut butter, cacao nibs and banana.</p>
-                    <div class="price-row">
-                        <span class="price">$13.50</span>
-                        <a href="#" class="add-btn">+</a>
-                    </div>
-                </div>
+            <div class="hero-image-wrapper">
+                
+                <img src="https://images.unsplash.com/photo-1626078299034-7bb6d5822b3d?q=80&w=1400&auto=format&fit=crop" alt="Oakberry Acai Cup" class="hero-cup">
             </div>
         </div>
     </section>
 
-    <section class="rewards-section">
-        <div class="rewards-container">
-            <div class="rewards-text">
-                <div class="reward-pill">UC Berkeley Special</div>
-                <h2>Fuel Your Studies.<br>Earn Free Bowls.</h2>
-                <p style="opacity: 0.9; max-width: 400px; margin-bottom: 2rem;">Show your Cal ID for 10% off every order, or join the Oakberry app to collect points.</p>
-                <a href="#" style="background: white; color: var(--oak-orange); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">Join Rewards</a>
+    <section class="products">
+        <div class="section-header">
+            <p>Millions of Combinations</p>
+            <h2>SIGNATURE OAKBERRY WORKS</h2>
+        </div>
+
+        <div class="grid">
+            <div class="bowl-card">
+                <div class="img-holder">
+                    <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1000&auto=format&fit=crop" alt="The Classic">
+                </div>
+                <h3>THE ORIGINAL</h3>
+                <p>Peanut butter, banana, granola, honey.</p>
+                <div class="price-tag">$12.50</div>
             </div>
+
+            <div class="bowl-card">
+                <div class="img-holder">
+                    <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=1000&auto=format&fit=crop" alt="The Works">
+                </div>
+                <h3>THE CRUNCH</h3>
+                <p>Chia pudding, cacao nibs, coconut.</p>
+                <div class="price-tag">$13.50</div>
+            </div>
+
+            <div class="bowl-card">
+                <div class="img-holder">
+                    <img src="https://images.unsplash.com/photo-1596450502967-85474378aa5a?q=80&w=1000&auto=format&fit=crop" alt="Tropical">
+                </div>
+                <h3>TROPICAL OAK</h3>
+                <p>Passion fruit, mango, strawberry.</p>
+                <div class="price-tag">$11.90</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="layers-section">
+        <div class="layers-content">
+            <h2>YOUR BOWL,<br><span>YOUR LAYERS.</span></h2>
+            <p style="font-size: 1.2rem; opacity: 0.8;">We don't just blend. We build. Unlimited toppings layered between our organic OAKBERRY açaí base.</p>
             
-            <div class="rewards-card">
-                <h3 style="margin-bottom: 1rem; color:white;">Current Status</h3>
-                <div style="background: rgba(255,255,255,0.2); height: 10px; border-radius: 5px; margin-bottom: 1rem; position: relative;">
-                    <div style="background: white; width: 70%; height: 100%; border-radius: 5px;"></div>
+            <div class="ingredient-grid">
+                <div class="ingredient">
+                    <h4>🥜</h4>
+                    <span>PEANUT BUTTER</span>
                 </div>
-                <p style="font-size: 0.9rem;">70/100 Points to next Free Bowl</p>
+                <div class="ingredient">
+                    <h4>🍌</h4>
+                    <span>BANANA</span>
+                </div>
+                <div class="ingredient">
+                    <h4>🥥</h4>
+                    <span>COCONUT</span>
+                </div>
+                <div class="ingredient">
+                    <h4>🥛</h4>
+                    <span>CHIA PUDDING</span>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo">OakBerry</div>
-        <p class="copyright">2244 Bancroft Way, Berkeley, CA<br>© 2025 OakBerry. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>OAK<span>BERRY</span></h2>
+                <p>BERKELEY<br>2244 Bancroft Way<br>Berkeley, CA 94704</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>MENU</h4>
+                <ul>
+                    <li><a href="#">WORKS</a></li>
+                    <li><a href="#">SMOOTHIES</a></li>
+                    <li><a href="#">TOPPINGS</a></li>
+                    <li><a href="#">NUTRITION</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>COMPANY</h4>
+                <ul>
+                    <li><a href="#">OUR STORY</a></li>
+                    <li><a href="#">CAREERS</a></li>
+                    <li><a href="#">FRANCHISE</a></li>
+                    <li><a href="#">PRESS</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>FOLLOW US</h4>
+                <ul>
+                    <li><a href="#">INSTAGRAM</a></li>
+                    <li><a href="#">TIKTOK</a></li>
+                    <li><a href="#">FACEBOOK</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 OAKBERRY BERKELEY. ALL RIGHTS RESERVED. GO BEARS 🐻
+        </div>
     </footer>
 
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
