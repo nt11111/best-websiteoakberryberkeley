@@ -193,7 +193,7 @@
         .products {
             background: var(--white);
             color: var(--oak-purple);
-            padding: 6rem 2rem;
+            padding: 6rem 2rem 8rem 2rem; /* Added bottom padding */
             position: relative;
         }
 
@@ -301,6 +301,68 @@
             font-family: var(--font-body);
         }
 
+        /* ================= BERK REWARDS SECTION ================= */
+        .rewards-section {
+            background: linear-gradient(135deg, var(--oak-purple), var(--oak-purple-dark));
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 5;
+            /* Reverse torn paper effect for visual interest */
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
+            margin-top: -3rem; /* Overlap slightly */
+            padding-top: 6rem;
+        }
+
+        .rewards-container {
+            max-width: var(--container);
+            margin: auto;
+        }
+
+        .rewards-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 3rem;
+        }
+        
+        .rewards-title span {
+            color: var(--oak-yellow);
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .reward-card {
+            background: rgba(255,255,255,0.08); /* Glass effect */
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .reward-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.12);
+            border-color: var(--oak-yellow);
+        }
+
+        .reward-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--oak-yellow);
+        }
+
+        .reward-card p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+        }
+
         /* ================= MAP SECTION ================= */
         .map-section {
             background: var(--oak-purple-dark);
@@ -380,6 +442,7 @@
             .hero-img-wrap { margin-top: 3rem; }
             .map-overlay { position: relative; left: 0; top: 0; transform: none; max-width: 100%; margin: 0; border-radius: 0; }
             .nav-menu { display: none; } 
+            .rewards-section { clip-path: none; margin-top: 0; }
         }
     </style>
 </head>
@@ -390,9 +453,9 @@
             <a href="#" class="logo">OAK<span>BERRY</span></a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#" class="nav-link">MENU</a></li>
-                    <li><a href="#" class="nav-link">LOCATIONS</a></li>
-                    <li><a href="#" class="nav-link">OUR STORY</a></li>
+                    <li><a href="#menu" class="nav-link">MENU</a></li>
+                    <li><a href="#rewards" class="nav-link">REWARDS</a></li>
+                    <li><a href="#location" class="nav-link">LOCATIONS</a></li>
                     <li><a href="#" class="btn-order">ORDER NOW</a></li>
                 </ul>
             </nav>
@@ -450,7 +513,27 @@
         </div>
     </section>
 
-    <section class="map-section">
+    <section id="rewards" class="rewards-section">
+        <div class="rewards-container">
+            <h2 class="rewards-title">BERK <span>REWARDS</span></h2>
+            <div class="rewards-grid">
+                <div class="reward-card">
+                    <h3>10% STUDENT DISCOUNT</h3>
+                    <p>Show your Cal ID at the register for instant savings on every bowl.</p>
+                </div>
+                <div class="reward-card">
+                    <h3>POINTS PER PURCHASE</h3>
+                    <p>Earn rewards toward free bowls with every order. No app required.</p>
+                </div>
+                <div class="reward-card">
+                    <h3>PRIORITY PICKUP</h3>
+                    <p>Order ahead online and skip the line for faster service between classes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="map-section">
         <div class="map-overlay">
             <h3>BERKELEY</h3>
             <p>2244 Bancroft Way<br>Berkeley, CA 94704<br>Daily: 8AM - 10PM</p>
